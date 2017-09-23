@@ -11,6 +11,7 @@ import java.util.List;
 public class Graphic {
 
     private final Slider[] params;
+
     private TMatrix matrix;
 
     Graphic(Slider[] params, TMatrix matrix) {
@@ -48,7 +49,14 @@ public class Graphic {
         }
 
         Drawer drawer = new Drawer(canvas);
-        drawer.draw(points,matrix);
+        drawer.draw(points,this.matrix);
 
+    }
+
+    public void setMatrix(TMatrix matrix) {
+        this.matrix = matrix;
+    }
+    public TMatrix getMatrix() {
+        return matrix;
     }
 }

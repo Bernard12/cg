@@ -17,7 +17,12 @@ public class Controller {
                 {0, 1, 0},
                 {0, 0, 1}}
                 );
-        Graphic g = new Graphic(params, matrix);
+        TMatrix matrix2 = new TMatrix(new double[][]{
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}}
+        );
+        Graphic g = new Graphic(params, matrix2);
 
         MyCanvas canvas = new MyCanvas(
                 center.getPrefWidth(), center.getPrefHeight(),
@@ -30,7 +35,10 @@ public class Controller {
         AnchorPane.setRightAnchor(canvas, 0.0);
 
         for (Slider slider : params) {
-            slider.valueProperty().addListener((observableValue, number, t1) -> g.draw(canvas));
+            slider.valueProperty().addListener((observableValue, number, t1) -> {
+                canvas.resize(canvas.getWidth(),canvas.getHeight());
+                g.draw(canvas);
+            });
         }
 
         center.getChildren().add(canvas);

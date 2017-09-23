@@ -26,17 +26,30 @@ public class MyCanvas extends Canvas {
 
     @Override
     public final void resize(double width, double height){
-        this.setWidth(width);
-        this.setHeight(height);
-        final GraphicsContext gc = this.getGraphicsContext2D();
-        double sc = Math.max(width/ initWidth,height / initHeight);
-        this.matrix.getMatrix()[0][0] = sc;
-        this.matrix.getMatrix()[1][1] = sc;
+        setWidth(width);
+        setHeight(height);
+        final GraphicsContext gc = getGraphicsContext2D();
+
+        double wChange = width/ initWidth;
+        double hChange = height/ initHeight;
+        double sc = Math.max(wChange,hChange);
+        double[][] newM = {
+                {sc, 0,  0},
+                {0,  sc, 0},
+                {0,  0,  1}
+        };
+        double[][] newM2 = {
+                {sc, 0,  0},
+                {0,  sc, 0},
+                {0,  0,  1}
+        };
+        //this.matrix = this.matrix.multyPly(new TMatrix(newM));
+        matrix = new TMatrix(newM);
+        g.setMatrix(new TMatrix(newM2));
         gc.setFill(Color.WHEAT);
-        gc.fillRect(0,0,this.getWidth(),this.getHeight());
+        gc.fillRect(0,0,getWidth(),getHeight());
         Drawer drawer = new Drawer(this);
         drawer.initCord(matrix);
-        g.draw(this);
     }
 
     @Override
@@ -44,4 +57,7 @@ public class MyCanvas extends Canvas {
         return true;
     }
 
+    public TMatrix getMatrix() {
+        return matrix;
+    }
 }

@@ -39,7 +39,6 @@ public class Drawer {
     }
 
     public void draw(List<Vector> points,TMatrix matrix){
-        this.initCord(matrix);
         for (int i = 1; i < points.size(); i++) {
             Vector t1 = points.get(i-1);
             Vector t2 = points.get(i);
