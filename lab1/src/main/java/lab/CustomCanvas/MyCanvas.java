@@ -11,17 +11,18 @@ import lab.Misc.TMatrix;
 public class MyCanvas extends Canvas {
 
     private TMatrix matrix;
-    private Graphic g;
     private double initWidth;
     private double initHeight;
 
-    public MyCanvas(double width, double height,
-                    TMatrix matrix, Graphic g){
+    public MyCanvas(double width, double height){
         super(width,height);
-        this.matrix = matrix;
+        this.matrix = new TMatrix(new double[][]{
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}}
+        );
         this.initWidth = width;
         this.initHeight = height;
-        this.g = g;
     }
 
     @Override
@@ -29,27 +30,14 @@ public class MyCanvas extends Canvas {
         setWidth(width);
         setHeight(height);
         final GraphicsContext gc = getGraphicsContext2D();
-
         double wChange = width/ initWidth;
         double hChange = height/ initHeight;
-        double sc = Math.max(wChange,hChange);
-        double[][] newM = {
-                {sc, 0,  0},
-                {0,  sc, 0},
-                {0,  0,  1}
-        };
-        double[][] newM2 = {
-                {sc, 0,  0},
-                {0,  sc, 0},
-                {0,  0,  1}
-        };
-        //this.matrix = this.matrix.multyPly(new TMatrix(newM));
-        matrix = new TMatrix(newM);
-        g.setMatrix(new TMatrix(newM2));
         gc.setFill(Color.WHEAT);
         gc.fillRect(0,0,getWidth(),getHeight());
-        Drawer drawer = new Drawer(this);
-        drawer.initCord(matrix);
+        double sc = Math.max(wChange,hChange);
+        matrix.getMatrix()[2][2] = sc;
+        Drawer drawer = new Drawer();
+        drawer.initCord(this,getMatrix());
     }
 
     @Override
