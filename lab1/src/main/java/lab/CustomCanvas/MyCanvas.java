@@ -14,8 +14,8 @@ public class MyCanvas extends Canvas {
     private double initWidth;
     private double initHeight;
 
-    public MyCanvas(double width, double height){
-        super(width,height);
+    public MyCanvas(double width, double height) {
+        super(width, height);
         this.matrix = new TMatrix(new double[][]{
                 {1, 0, 0},
                 {0, 1, 0},
@@ -26,22 +26,22 @@ public class MyCanvas extends Canvas {
     }
 
     @Override
-    public final void resize(double width, double height){
+    public final void resize(double width, double height) {
         setWidth(width);
         setHeight(height);
         final GraphicsContext gc = getGraphicsContext2D();
-        double wChange = width/ initWidth;
-        double hChange = height/ initHeight;
+        double wChange = initWidth / width;
+        double hChange = initHeight / height;
         gc.setFill(Color.WHEAT);
-        gc.fillRect(0,0,getWidth(),getHeight());
-        double sc = Math.max(wChange,hChange);
+        gc.fillRect(0, 0, getWidth(), getHeight());
+        double sc = Math.max(wChange, hChange);
         matrix.getMatrix()[2][2] = sc;
         Drawer drawer = new Drawer();
-        drawer.initCord(this,getMatrix());
+        drawer.initCord(this, getMatrix());
     }
 
     @Override
-    public final boolean isResizable(){
+    public final boolean isResizable() {
         return true;
     }
 

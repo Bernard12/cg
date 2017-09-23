@@ -11,54 +11,46 @@ import java.util.List;
 
 public class Drawer {
 
-    private final MyCanvas canvas;
-
-    private int xCenter,yCenter;
-
-    public Drawer(MyCanvas canvas) {
-        this.canvas = canvas;
-        this.xCenter = (int)canvas.getWidth()/2;
-        this.yCenter = (int)canvas.getHeight()/2;
+    public Drawer() {
     }
 
-    public MyCanvas getCanvas() {
-        return canvas;
-    }
-
-
-    public void initCord(TMatrix matrix) {
+    public void initCord(MyCanvas canvas, TMatrix state) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.WHEAT);
-        gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int axisSize = 50;
-        Vector zero = matrix.transform(new Vector(0, 0,1));
-        Vector x = matrix.transform(new Vector(axisSize, 0,1));
-        Vector y = matrix.transform(new Vector(0, axisSize,1));
-        this.line(zero,x,Color.GREEN);
-        this.line(zero,y,Color.RED);
+        Vector zero = state.transform(new Vector(0, 0, 1));
+        Vector x = state.transform(new Vector(axisSize, 0, 1));
+        Vector y = state.transform(new Vector(0, axisSize, 1));
+        line(canvas, zero, x, Color.GREEN);
+        line(canvas, zero, y, Color.RED);
     }
 
-    public void draw(List<Vector> points,TMatrix matrix){
+    public void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
         for (int i = 1; i < points.size(); i++) {
-            Vector t1 = points.get(i-1);
+            Vector t1 = points.get(i - 1);
             Vector t2 = points.get(i);
-            Vector firstPoint = matrix.transform(t1);
-            Vector secondPoint = matrix.transform(t2);
-            this.line(firstPoint, secondPoint, Color.GOLDENROD);
+            Vector firstPoint = state.transform(t1);
+            Vector secondPoint = state.transform(t2);
+            line(canvas, firstPoint, secondPoint, Color.GOLDENROD);
         }
     }
 
-    public void rVector(Vector p){
-        Vector zero = new Vector(0, 0,1);
-        this.line(zero,p,Color.YELLOW);
+    public void rVector(MyCanvas canvas, Vector p) {
+        Vector zero = new Vector(0, 0, 1);
+        line(canvas, zero, p, Color.YELLOW);
     }
 
-    public void line(Vector p1, Vector p2, Paint color){
+    private void line(MyCanvas canvas, Vector p1, Vector p2, Paint color) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        int xCenter = (int) canvas.getWidth() / 2;
+        int yCenter = (int) canvas.getHeight() / 2;
         gc.setStroke(color);
+        double h1 = p1.getH();
+        double h2 = p2.getH();
         gc.strokeLine(
-                p1.getX()+xCenter,-p1.getY()+yCenter,
-                p2.getX()+xCenter,-p2.getY()+yCenter);
+                (p1.getX() / h1) + xCenter, (-p1.getY() / h1) + yCenter,
+                (p2.getX() / h2) + xCenter, (-p2.getY() / h2) + yCenter);
     }
 
 }

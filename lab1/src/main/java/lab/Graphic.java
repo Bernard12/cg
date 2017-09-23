@@ -12,18 +12,15 @@ public class Graphic {
 
     private final Slider[] params;
 
-    private TMatrix matrix;
-
-    Graphic(Slider[] params, TMatrix matrix) {
+    Graphic(Slider[] params) {
         this.params = params;
-        this.matrix = matrix;
     }
 
     public Slider[] getParams() {
         return params;
     }
 
-    public List<Vector> points(){
+    private List<Vector> points(){
         double A, B, a, b, t;
         A = params[0].getValue();
         B = params[1].getValue();
@@ -42,21 +39,15 @@ public class Graphic {
         return list;
     }
 
-    public void draw(MyCanvas canvas) {
+    void draw(MyCanvas canvas, TMatrix state) {
         List<Vector> points = this.points();
         if(points.isEmpty()){
             return;
         }
 
-        Drawer drawer = new Drawer(canvas);
-        drawer.draw(points,this.matrix);
+        Drawer drawer = new Drawer();
+        drawer.draw(canvas,points,state);
 
     }
 
-    public void setMatrix(TMatrix matrix) {
-        this.matrix = matrix;
-    }
-    public TMatrix getMatrix() {
-        return matrix;
-    }
 }

@@ -12,21 +12,16 @@ public class Controller {
     private void initialize() {
         Slider[] params = {pA, pB, pa, pb, pStep};
 
-        TMatrix matrix = new TMatrix(new double[][]{
+        TMatrix state = new TMatrix(new double[][]{
                 {1, 0, 0},
                 {0, 1, 0},
                 {0, 0, 1}}
                 );
-        TMatrix matrix2 = new TMatrix(new double[][]{
-                {1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}}
-        );
-        Graphic g = new Graphic(params, matrix2);
+        Graphic graphic = new Graphic(params);
 
         MyCanvas canvas = new MyCanvas(
-                center.getPrefWidth(), center.getPrefHeight(),
-                matrix,g
+                center.getPrefWidth(),
+                center.getPrefHeight()
         );
 
         AnchorPane.setTopAnchor(canvas, 0.0);
@@ -37,7 +32,7 @@ public class Controller {
         for (Slider slider : params) {
             slider.valueProperty().addListener((observableValue, number, t1) -> {
                 canvas.resize(canvas.getWidth(),canvas.getHeight());
-                g.draw(canvas);
+                graphic.draw(canvas,state);
             });
         }
 
@@ -46,9 +41,6 @@ public class Controller {
 
     @FXML
     private AnchorPane center;
-
-    @FXML
-    private AnchorPane right;
 
     @FXML
     private Slider pA;
