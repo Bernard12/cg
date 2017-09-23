@@ -4,40 +4,39 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lab.Drawer;
-import lab.Graphic;
 import lab.Misc.TMatrix;
 
 
 public class MyCanvas extends Canvas {
 
-    private TMatrix matrix;
+    private TMatrix state;
     private double initWidth;
     private double initHeight;
 
     public MyCanvas(double width, double height) {
         super(width, height);
-        this.matrix = new TMatrix(new double[][]{
+        widthProperty().addListener((observableValue, number, t1) -> init());
+        heightProperty().addListener((observableValue, number, t1) -> init());
+        state = new TMatrix(new double[][] {
                 {1, 0, 0},
                 {0, 1, 0},
                 {0, 0, 1}}
         );
-        this.initWidth = width;
-        this.initHeight = height;
+        initWidth = width;
+        initHeight = height;
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.setFill(Color.WHEAT);
+        gc.fillRect(0, 0, getWidth(), getHeight());
+        Drawer drawer = new Drawer();
+        drawer.initCord(this, state);
     }
 
     @Override
     public final void resize(double width, double height) {
         setWidth(width);
         setHeight(height);
-        final GraphicsContext gc = getGraphicsContext2D();
-        double wChange = initWidth / width;
-        double hChange = initHeight / height;
-        gc.setFill(Color.WHEAT);
-        gc.fillRect(0, 0, getWidth(), getHeight());
-        double sc = Math.max(wChange, hChange);
-        matrix.getMatrix()[2][2] = sc;
-        Drawer drawer = new Drawer();
-        drawer.initCord(this, getMatrix());
+        double sc = Math.max(initWidth / width, initHeight / height);
+        state.getMatrix()[2][2] = sc;
     }
 
     @Override
@@ -45,7 +44,11 @@ public class MyCanvas extends Canvas {
         return true;
     }
 
-    public TMatrix getMatrix() {
-        return matrix;
+    public void init() {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.setFill(Color.WHEAT);
+        gc.fillRect(0, 0, getWidth(), getHeight());
+        Drawer drawer = new Drawer();
+        drawer.initCord(this, state);
     }
 }

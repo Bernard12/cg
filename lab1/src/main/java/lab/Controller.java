@@ -9,37 +9,6 @@ import lab.Misc.TMatrix;
 public class Controller {
 
     @FXML
-    private void initialize() {
-        Slider[] params = {pA, pB, pa, pb, pStep};
-
-        TMatrix state = new TMatrix(new double[][]{
-                {1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}}
-                );
-        Graphic graphic = new Graphic(params);
-
-        MyCanvas canvas = new MyCanvas(
-                center.getPrefWidth(),
-                center.getPrefHeight()
-        );
-
-        AnchorPane.setTopAnchor(canvas, 0.0);
-        AnchorPane.setBottomAnchor(canvas, 0.0);
-        AnchorPane.setLeftAnchor(canvas, 0.0);
-        AnchorPane.setRightAnchor(canvas, 0.0);
-
-        for (Slider slider : params) {
-            slider.valueProperty().addListener((observableValue, number, t1) -> {
-                canvas.resize(canvas.getWidth(),canvas.getHeight());
-                graphic.draw(canvas,state);
-            });
-        }
-
-        center.getChildren().add(canvas);
-    }
-
-    @FXML
     private AnchorPane center;
 
     @FXML
@@ -56,5 +25,51 @@ public class Controller {
 
     @FXML
     private Slider pStep;
+
+    @FXML
+    private void initialize() {
+        Slider[] params = {pA, pB, pa, pb, pStep};
+
+        TMatrix state = new TMatrix(new double[][]{
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}}
+        );
+        Graphic graphic = new Graphic(params);
+
+        MyCanvas canvas = new MyCanvas(
+                center.getPrefWidth(),
+                center.getPrefHeight()
+        );
+        double width = center.getPrefWidth();
+        double height = center.getPrefHeight();
+
+        AnchorPane.setTopAnchor(canvas, 0.0);
+        AnchorPane.setBottomAnchor(canvas, 0.0);
+        AnchorPane.setLeftAnchor(canvas, 0.0);
+        AnchorPane.setRightAnchor(canvas, 0.0);
+
+        for (Slider slider : params) {
+            slider.valueProperty().addListener((observableValue, number, t1) -> {
+                canvas.init();
+                graphic.draw(canvas, state);
+            });
+        }
+
+        canvas.widthProperty().addListener((observableValue, number, t1) -> {
+            double cur = state.getMatrix()[2][2];
+            double sc = Math.max(cur,
+                    t1.doubleValue()/width);
+            state.getMatrix()[2][2] = 1/sc;
+        });
+        canvas.heightProperty().addListener((observableValue, number, t1) -> {
+            double cur = state.getMatrix()[2][2];
+            double sc = Math.max(cur,
+                    t1.doubleValue()/height);
+            state.getMatrix()[2][2] = 1/sc;
+        });
+
+        center.getChildren().add(canvas);
+    }
 
 }
