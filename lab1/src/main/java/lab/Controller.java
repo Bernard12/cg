@@ -12,7 +12,11 @@ public class Controller {
     private void initialize() {
         Slider[] params = {pA, pB, pa, pb, pStep};
 
-        TMatrix matrix = new TMatrix(new double[][]{{1, 0}, {0, 1}});
+        TMatrix matrix = new TMatrix(new double[][]{
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}}
+                );
         Graphic g = new Graphic(params, matrix);
 
         MyCanvas canvas = new MyCanvas(

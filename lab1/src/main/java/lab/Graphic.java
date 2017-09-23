@@ -36,7 +36,7 @@ public class Graphic {
         for (double i = A; i <= B; i += t) {
             double x = a * i - b * Math.sin(i);
             double y = a - b * Math.cos(i);
-            list.add(new Vector(x * 40, y * 40));
+            list.add(new Vector(x * 40, y * 40,1));
         }
         return list;
     }

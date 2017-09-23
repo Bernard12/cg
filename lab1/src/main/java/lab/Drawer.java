@@ -31,9 +31,9 @@ public class Drawer {
         gc.setFill(Color.WHEAT);
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
         int axisSize = 50;
-        Vector zero = matrix.transform(new Vector(0, 0));
-        Vector x = matrix.transform(new Vector(axisSize, 0));
-        Vector y = matrix.transform(new Vector(0, axisSize));
+        Vector zero = matrix.transform(new Vector(0, 0,1));
+        Vector x = matrix.transform(new Vector(axisSize, 0,1));
+        Vector y = matrix.transform(new Vector(0, axisSize,1));
         this.line(zero,x,Color.GREEN);
         this.line(zero,y,Color.RED);
     }
@@ -50,7 +50,7 @@ public class Drawer {
     }
 
     public void rVector(Vector p){
-        Vector zero = new Vector(0, 0);
+        Vector zero = new Vector(0, 0,1);
         this.line(zero,p,Color.YELLOW);
     }
 
