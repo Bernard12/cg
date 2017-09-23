@@ -60,13 +60,13 @@ public class Controller {
             double cur = state.getMatrix()[2][2];
             double sc = Math.max(cur,
                     t1.doubleValue()/width);
-            state.getMatrix()[2][2] = 1/sc;
+            state.getMatrix()[2][2] = 0.75/sc;
         });
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
             double cur = state.getMatrix()[2][2];
             double sc = Math.max(cur,
                     t1.doubleValue()/height);
-            state.getMatrix()[2][2] = 1/sc;
+            state.getMatrix()[2][2] = 0.75/sc;
         });
 
         center.getChildren().add(canvas);
