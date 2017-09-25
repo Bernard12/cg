@@ -33,10 +33,10 @@ public class MyCanvas extends Canvas {
 
     @Override
     public final void resize(double width, double height) {
+        double sc = Math.max(width / initWidth, height / initHeight);
+        state.getMatrix()[2][2] = sc;
         setWidth(width);
         setHeight(height);
-        double sc = Math.max(initWidth / width, initHeight / height);
-        state.getMatrix()[2][2] = sc;
     }
 
     @Override
