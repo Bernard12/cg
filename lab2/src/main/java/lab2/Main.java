@@ -1,4 +1,4 @@
-package lab;
+package lab2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +9,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception{
-        final Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab1.fxml"));
+    public void start(Stage stage) throws Exception {
+        final Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab2.fxml"));
         final Scene scene = new Scene(root);
-        stage.setTitle("ЫЫЫЫЫЫЫЫЫ");
+        stage.setTitle("OLOLOLO");
         stage.setScene(scene);
         stage.show();
         stage.setMinWidth(scene.getWindow().getWidth());

@@ -1,10 +1,10 @@
-package lab;
+package lab2;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
-import lab.CustomCanvas.MyCanvas;
-import lab.Misc.TMatrix;
+import lab2.CustomCanvas.MyCanvas;
+import lab2.Misc.TMatrix;
 
 public class Controller {
 
@@ -57,11 +57,11 @@ public class Controller {
         }
 
         canvas.widthProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue()/width;
+            double sc = t1.doubleValue() / width;
             state.getMatrix()[2][2] = sc;
         });
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue()/height;
+            double sc = t1.doubleValue() / height;
             state.getMatrix()[2][2] = sc;
         });
 

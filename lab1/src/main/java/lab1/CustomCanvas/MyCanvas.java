@@ -1,10 +1,10 @@
-package lab.CustomCanvas;
+package lab1.CustomCanvas;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import lab.Drawer;
-import lab.Misc.TMatrix;
+import lab1.Drawer;
+import lab1.Misc.TMatrix;
 
 
 public class MyCanvas extends Canvas {
@@ -15,8 +15,8 @@ public class MyCanvas extends Canvas {
 
     public MyCanvas(double width, double height) {
         super(width, height);
-        widthProperty().addListener((observableValue, number, t1) -> init());
-        heightProperty().addListener((observableValue, number, t1) -> init());
+        //widthProperty().addListener((observableValue, number, t1) -> init());
+        //heightProperty().addListener((observableValue, number, t1) -> init());
         state = new TMatrix(new double[][] {
                 {1, 0, 0},
                 {0, 1, 0},
@@ -37,6 +37,7 @@ public class MyCanvas extends Canvas {
         state.getMatrix()[2][2] = sc;
         setWidth(width);
         setHeight(height);
+        init();
     }
 
     @Override
