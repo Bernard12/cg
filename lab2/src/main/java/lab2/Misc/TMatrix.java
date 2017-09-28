@@ -33,9 +33,6 @@ public class TMatrix {
         double z = vector.getX() * _02 + vector.getY() * _12 + vector.getZ() * _22 + vector.getH() * _32;
         double h = vector.getX() * _03 + vector.getY() * _13 + vector.getZ() * _23 + vector.getH() * _33;
 
-        //double y = vector.getX() * _01 + vector.getY() * _11 + vector.getH() * _21;
-        //double z = 0;
-        //double h = vector.getX() * _02 + vector.getY() * _12 + vector.getH() * _22;
         return new Vector(x, y, z, h);
     }
 
