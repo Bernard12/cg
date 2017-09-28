@@ -22,9 +22,10 @@ public class Drawer {
         Vector zero = state.transform(new Vector(0, 0, 0, 1));
         Vector x = state.transform(new Vector(axisSize, 0, 0, 1));
         Vector y = state.transform(new Vector(0, axisSize, 0, 1));
-        Vector z = state.transform(new Vector(0, 0, axisSize, 1));
-        line(canvas, zero, x, Color.GREEN);
-        line(canvas, zero, y, Color.RED);
+        Vector z = state.transform(new Vector(0, 0, 30, 1));
+        line(canvas, zero, x, Color.RED);
+        line(canvas, zero, y, Color.GREEN);
+        line(canvas,zero,z,Color.BLUE);
     }
 
     public void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {

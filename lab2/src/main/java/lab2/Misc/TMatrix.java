@@ -1,12 +1,23 @@
 package lab2.Misc;
 
 
+import com.sun.istack.internal.NotNull;
+
 public class TMatrix {
 
-    private final double[][] matrix;
+    private double[][] matrix;
 
     public TMatrix(double[][] matrix) {
         this.matrix = matrix;
+    }
+
+    public TMatrix() {
+        this(new double[][]{
+                {1, 0, 0, 0},
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+        });
     }
 
     public Vector transform(Vector vector) {
@@ -36,8 +47,13 @@ public class TMatrix {
         return new Vector(x, y, z, h);
     }
 
-    public TMatrix multyPly(TMatrix m) {
-        double[][] t = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+    public void multyPly(TMatrix m) {
+        double[][] t = {
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0}
+        };
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 for (int k = 0; k < 4; k++) {
@@ -45,6 +61,30 @@ public class TMatrix {
                 }
             }
         }
+        this.matrix = t;
+    }
+
+    public static @NotNull TMatrix rotationY(double angle){
+        double rad = (angle%360)*Math.PI/180;
+        double COS = Math.cos(rad);
+        double SIN = Math.sin(rad);
+        double[][] t = new double[][]{
+                {COS,  0, -SIN, 0},
+                {0,    1,    0, 0},
+                {SIN,  0,  COS, 0},
+                {0,    0,    0, 1}};
+        return new TMatrix(t);
+    }
+
+    public static @NotNull TMatrix rotationX(double angle){
+        double rad = (angle%360)*Math.PI/180;
+        double COS = Math.cos(rad);
+        double SIN = Math.sin(rad);
+        double[][] t = new double[][]{
+                {1,    0,    0, 0},
+                {0,  COS,  SIN, 0},
+                {0, -SIN,  COS, 0},
+                {0,    0,    0, 1}};
         return new TMatrix(t);
     }
 

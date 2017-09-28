@@ -13,16 +13,11 @@ public class MyCanvas extends Canvas {
     private double initWidth;
     private double initHeight;
 
-    public MyCanvas(double width, double height) {
+    public MyCanvas(double width, double height,TMatrix m) {
         super(width, height);
         //widthProperty().addListener((observableValue, number, t1) -> init());
         //heightProperty().addListener((observableValue, number, t1) -> init());
-        state = new TMatrix(new double[][]{
-                {1, 0, 0, 0},
-                {0, 1, 0, 0},
-                {0, 0, 1, 0},
-                {0, 0, 0, 1}}
-        );
+        state = m;
         initWidth = width;
         initHeight = height;
         GraphicsContext gc = getGraphicsContext2D();
@@ -35,7 +30,7 @@ public class MyCanvas extends Canvas {
     @Override
     public final void resize(double width, double height) {
         double sc = Math.max(width / initWidth, height / initHeight);
-        state.getMatrix()[2][2] = sc;
+        state.getMatrix()[3][3] = sc;
         setWidth(width);
         setHeight(height);
         init();
@@ -47,11 +42,11 @@ public class MyCanvas extends Canvas {
     }
 
     public void init() {
-       /* GraphicsContext gc = getGraphicsContext2D();
+        GraphicsContext gc = getGraphicsContext2D();
         gc.setFill(Color.WHEAT);
         gc.fillRect(0, 0, getWidth(), getHeight());
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
-        //huita*/
+        int a = 5/2;
     }
 }
