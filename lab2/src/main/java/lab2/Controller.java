@@ -1,6 +1,7 @@
 package lab2;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lab2.CustomCanvas.MyCanvas;
@@ -39,11 +40,11 @@ public class Controller {
 
         canvas.widthProperty().addListener((observableValue, number, t1) -> {
             double sc = t1.doubleValue() / width;
-            state.getMatrix()[2][2] = sc;
+            state.getMatrix()[3][3] = sc;
         });
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
             double sc = t1.doubleValue() / height;
-            state.getMatrix()[2][2] = sc;
+            state.getMatrix()[3][3] = sc;
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,rot);
