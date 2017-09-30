@@ -23,7 +23,7 @@ public class RotationHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         EventType<? extends MouseEvent> type = mouseEvent.getEventType();
-        if(type == MouseEvent.MOUSE_CLICKED){
+        if(type == MouseEvent.MOUSE_PRESSED){
             startX = mouseEvent.getX();
             startY = mouseEvent.getY();
             System.out.println("click");

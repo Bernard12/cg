@@ -14,12 +14,12 @@ public class Figure {
         r2 = highRad;
         firstLevel = new ArrayList<>();
         secondLevel = new ArrayList<>();
-        generatePoints();
+        generatePoints(4);
     }
 
-    private void generatePoints() {
+    private void generatePoints(int k) {
         double cur = 0;
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < k; i++) {
             double x1 = r1 * Math.cos(cur * Math.PI / 180);
             double y1 = r1 * Math.sin(cur * Math.PI / 180);
             double z1 = 0;
@@ -28,7 +28,7 @@ public class Figure {
             double y2 = r2 * Math.sin(cur * Math.PI / 180);
             double z2 = 25;
             secondLevel.add(new Vector(x2, y2, z2, 1));
-            cur += 360 / 17;
+            cur += 360 / k;
         }
     }
 

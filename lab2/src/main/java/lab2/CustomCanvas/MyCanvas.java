@@ -16,6 +16,7 @@ public class MyCanvas extends Canvas {
 
     private double initWidth;
     private double initHeight;
+
     public MyCanvas(double width, double height,TMatrix m) {
         super(width, height);
         state = m;
