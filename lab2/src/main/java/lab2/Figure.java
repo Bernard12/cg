@@ -26,7 +26,7 @@ public class Figure {
             firstLevel.add(new Vector(x1, y1, z1, 1));
             double x2 = r2 * Math.cos(cur * Math.PI / 180);
             double y2 = r2 * Math.sin(cur * Math.PI / 180);
-            double z2 = 0;
+            double z2 = 25;
             secondLevel.add(new Vector(x2, y2, z2, 1));
             cur += 360 / 17;
         }
@@ -36,5 +36,21 @@ public class Figure {
         Drawer drawer = new Drawer();
         drawer.draw(canvas, firstLevel);
         drawer.draw(canvas, secondLevel);
+    }
+
+    public ArrayList<Vector> getFirstLevel() {
+        return firstLevel;
+    }
+
+    public ArrayList<Vector> getSecondLevel() {
+        return secondLevel;
+    }
+
+    public double getR1() {
+        return r1;
+    }
+
+    public double getR2() {
+        return r2;
     }
 }

@@ -4,15 +4,18 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lab2.Drawer;
+import lab2.Figure;
 import lab2.Misc.TMatrix;
 
 
 public class MyCanvas extends Canvas {
 
     private TMatrix state;
+
+    private Figure fig;
+
     private double initWidth;
     private double initHeight;
-
     public MyCanvas(double width, double height,TMatrix m) {
         super(width, height);
         state = m;
@@ -45,10 +48,15 @@ public class MyCanvas extends Canvas {
         gc.fillRect(0, 0, getWidth(), getHeight());
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
-        int a = 5/2;
+        drawer.draw(this,fig.getFirstLevel());
+        drawer.draw(this,fig.getSecondLevel());
     }
 
     public TMatrix getState() {
         return state;
+    }
+
+    public void setFig(Figure fig) {
+        this.fig = fig;
     }
 }
