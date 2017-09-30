@@ -39,17 +39,6 @@ public class Controller {
         AnchorPane.setLeftAnchor(canvas, 0.0);
         AnchorPane.setRightAnchor(canvas, 0.0);
 
-        /*canvas.widthProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue() / width;
-            double cur = state.getMatrix()[3][3];
-            state.getMatrix()[3][3] = Math.max(sc,cur);
-        });
-        canvas.heightProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue() / height;
-            double cur = state.getMatrix()[3][3];
-            state.getMatrix()[3][3] = Math.max(sc,cur);
-        });*/
-
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED,rot);
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,rot);
         center.getChildren().add(canvas);

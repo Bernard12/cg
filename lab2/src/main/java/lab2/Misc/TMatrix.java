@@ -64,7 +64,7 @@ public class TMatrix {
         this.matrix = t;
     }
 
-    public static @NotNull TMatrix rotationY(double angle){
+    public static TMatrix rotationY(double angle){
         double rad = (angle%360)*Math.PI/180;
         double COS = Math.cos(rad);
         double SIN = Math.sin(rad);
@@ -76,7 +76,7 @@ public class TMatrix {
         return new TMatrix(t);
     }
 
-    public static @NotNull TMatrix rotationX(double angle){
+    public static TMatrix rotationX(double angle){
         double rad = (angle%360)*Math.PI/180;
         double COS = Math.cos(rad);
         double SIN = Math.sin(rad);
@@ -87,6 +87,27 @@ public class TMatrix {
                 {0,    0,    0, 1}};
         return new TMatrix(t);
     }
+
+    public static TMatrix screen(double width,double height) {
+        final double A = (width - 1.0) / 2.0;
+        final double B = (height - 1.0) / 2.0;
+        double[][] t = new double[][]{
+                {A, 0, 0, A},
+                {0, -B, 0, B},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}};
+        return new TMatrix(t);
+    }
+
+    public static TMatrix view(double x,double y,double z) {
+        double[][] t = new double[][]{
+                {1, 0, 0, 0},
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {x, y, z, 1}};
+        return new TMatrix(t);
+    }
+
 
     public double[][] getMatrix() {
         return matrix;
