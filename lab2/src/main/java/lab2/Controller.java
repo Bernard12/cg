@@ -32,6 +32,7 @@ public class Controller {
         double height = center.getPrefHeight();
 
         RotationHandler rot = new RotationHandler(canvas,state);
+        Figure fig = new Figure(100,50);
 
         AnchorPane.setTopAnchor(canvas, 0.0);
         AnchorPane.setBottomAnchor(canvas, 0.0);
@@ -41,10 +42,12 @@ public class Controller {
         canvas.widthProperty().addListener((observableValue, number, t1) -> {
             double sc = t1.doubleValue() / width;
             state.getMatrix()[3][3] = sc;
+            fig.draw(canvas);
         });
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
             double sc = t1.doubleValue() / height;
             state.getMatrix()[3][3] = sc;
+            fig.draw(canvas);
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,rot);

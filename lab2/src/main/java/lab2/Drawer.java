@@ -28,8 +28,14 @@ public class Drawer {
         line(canvas,zero,z,Color.BLUE);
     }
 
-    public void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
-
+    public void draw(MyCanvas canvas, List<Vector> points) {
+        for(int i = 0; i < points.size(); i++) {
+            Vector cur = points.get(i);
+            Vector next = points.get((i + 1) % points.size());
+            cur = canvas.getState().transform(cur);
+            next = canvas.getState().transform(next);
+            line(canvas,cur,next,Color.BLACK);
+        }
     }
 
     public void rVector(MyCanvas canvas, Vector p) {

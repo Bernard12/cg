@@ -15,8 +15,6 @@ public class MyCanvas extends Canvas {
 
     public MyCanvas(double width, double height,TMatrix m) {
         super(width, height);
-        //widthProperty().addListener((observableValue, number, t1) -> init());
-        //heightProperty().addListener((observableValue, number, t1) -> init());
         state = m;
         initWidth = width;
         initHeight = height;
@@ -48,5 +46,9 @@ public class MyCanvas extends Canvas {
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
         int a = 5/2;
+    }
+
+    public TMatrix getState() {
+        return state;
     }
 }

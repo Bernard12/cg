@@ -13,7 +13,7 @@ public class RotationHandler implements EventHandler<MouseEvent> {
     private double startX;
     private double startY;
 
-    public RotationHandler(MyCanvas c,TMatrix m){
+    RotationHandler(MyCanvas c, TMatrix m){
         canvas = c;
         state = m;
         startX = c.getWidth()/2;
