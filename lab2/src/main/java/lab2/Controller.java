@@ -50,7 +50,7 @@ public class Controller {
             state.getMatrix()[3][3] = Math.max(sc,cur);
         });*/
 
-        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,rot);
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED,rot);
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,rot);
         center.getChildren().add(canvas);
     }

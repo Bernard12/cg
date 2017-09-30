@@ -51,6 +51,11 @@ public class MyCanvas extends Canvas {
         drawer.initCord(this, state);
         drawer.draw(this,fig.getFirstLevel());
         drawer.draw(this,fig.getSecondLevel());
+        for(int i = 0; i < fig.getFirstLevel().size();i++){
+            drawer.draw(this,
+                    fig.getFirstLevel().get(i),
+                    fig.getSecondLevel().get((i)));
+        }
     }
 
     public TMatrix getState() {

@@ -1,5 +1,6 @@
 package lab2;
 
+import com.sun.scenario.effect.impl.prism.PrImage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -36,6 +37,12 @@ public class Drawer {
             next = canvas.getState().transform(next);
             line(canvas,cur,next,Color.BLACK);
         }
+    }
+
+    public void draw(MyCanvas canvas,Vector p1,Vector p2){
+        Vector t1 = canvas.getState().transform(p1);
+        Vector t2 = canvas.getState().transform(p2);
+        line(canvas,t1,t2,Color.BLACK);
     }
 
     public void rVector(MyCanvas canvas, Vector p) {
