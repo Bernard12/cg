@@ -15,8 +15,6 @@ public class MyCanvas extends Canvas {
 
     public MyCanvas(double width, double height) {
         super(width, height);
-        //widthProperty().addListener((observableValue, number, t1) -> init());
-        //heightProperty().addListener((observableValue, number, t1) -> init());
         state = new TMatrix(new double[][] {
                 {1, 0, 0},
                 {0, 1, 0},
@@ -24,9 +22,6 @@ public class MyCanvas extends Canvas {
         );
         initWidth = width;
         initHeight = height;
-        GraphicsContext gc = getGraphicsContext2D();
-        gc.setFill(Color.WHEAT);
-        gc.fillRect(0, 0, getWidth(), getHeight());
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
     }

@@ -30,8 +30,6 @@ public class RotationHandler implements EventHandler<MouseEvent> {
         }else{
             double diffX = mouseEvent.getSceneX() - startX;
             double diffY = mouseEvent.getSceneY() - startY;
-            System.out.println("X DIFF " + diffX);
-            System.out.println("Y DIFF " + diffX);
 
             state.multyPly(TMatrix.rotationX(diffY));
             state.multyPly(TMatrix.rotationY(diffX));
