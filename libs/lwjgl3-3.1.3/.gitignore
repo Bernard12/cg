@@ -1,0 +1,15 @@
+/.idea/workspace.xml
+/bin
+/modules/core/src/generated
+/libs
+/wiki
+.gradle
+.DS_Store
+*.bat
+*.jpg
+*.ogg
+*.sh
+*.ttf
+*.wav
+*.zip
+touch.txt
