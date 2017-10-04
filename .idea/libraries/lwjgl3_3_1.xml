@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lwjgl3-3.1">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/libs/lwjgl3-3.1.3" />
+      <root url="file://$PROJECT_DIR$/libs/lwjgl3-3.1.3/modules/core/src/main/java" />
+      <root url="file://$PROJECT_DIR$/libs/lwjgl3-3.1.3/modules/core/src/main/java9" />
+      <root url="file://$PROJECT_DIR$/libs/lwjgl3-3.1.3/modules/core/src/test/java" />
+      <root url="file://$PROJECT_DIR$/libs/lwjgl3-3.1.3/modules/generator/src/main/java" />
+    </SOURCES>
+  </library>
+</component>
