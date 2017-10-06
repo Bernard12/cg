@@ -11,6 +11,20 @@ public class Vector {
         this.z = z;
     }
 
+    // scalar production
+    public static double dotProduct(Vector a,Vector b) {
+        return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ();
+    }
+
+    // vector production
+    public static Vector crossProduct(Vector a,Vector b) {
+        return new Vector(
+                a.getY() * b.getZ() - a.getZ() * b.getY(),
+                a.getZ() * b.getX() - a.getX() * b.getZ(),
+                a.getX() * b.getY() - a.getY() * b.getX(),
+                a.getH());
+    }
+
     public final double getX() {
         return this.x;
     }
