@@ -25,6 +25,10 @@ public class Vector {
                 a.getH());
     }
 
+    public static double tripleProduct(Vector a,Vector b,Vector c){
+        return dotProduct(a,crossProduct(b,c));
+    }
+
     public final double getX() {
         return this.x;
     }
