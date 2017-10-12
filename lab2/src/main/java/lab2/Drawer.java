@@ -30,12 +30,25 @@ public class Drawer {
     }
 
     public void draw(MyCanvas canvas, List<Vector> points) {
-        for(int i = 0; i < points.size(); i++) {
+        /*for(int i = 0; i < points.size(); i++) {
             Vector cur = points.get(i);
             Vector next = points.get((i + 1) % points.size());
             cur = canvas.getState().transform(cur);
             next = canvas.getState().transform(next);
             line(canvas,cur,next,Color.BLACK);
+        }*/
+        Vector def = new Vector(
+                0,
+                0,
+                points.get(0).getZ(),
+                points.get(0).getH()
+        );
+        int n = points.size();
+        for (int i = 0; i < n; i++) {
+            drawTriangle(canvas,
+                    def,
+                    points.get(i % n),
+                    points.get((i + 1) % n));
         }
     }
 
@@ -43,6 +56,12 @@ public class Drawer {
         Vector t1 = canvas.getState().transform(p1);
         Vector t2 = canvas.getState().transform(p2);
         line(canvas,t1,t2,Color.BLACK);
+    }
+
+    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3) {
+        draw(canvas,p1,p2);
+        draw(canvas,p1,p3);
+        draw(canvas,p2,p3);
     }
 
     public void rVector(MyCanvas canvas, Vector p) {

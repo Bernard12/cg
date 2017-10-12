@@ -39,11 +39,11 @@ public class Vector {
     }
 
     public final double getX() {
-        return this.x;
+        return x;
     }
 
     public final double getY() {
-        return this.y;
+        return y;
     }
 
     public final double getH() {
