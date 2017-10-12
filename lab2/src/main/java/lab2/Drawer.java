@@ -29,7 +29,7 @@ public class Drawer {
         line(canvas,zero,z,Color.BLUE);
     }
 
-    public void draw(MyCanvas canvas, List<Vector> points) {
+    public void draw(MyCanvas canvas, List<Vector> points,int k) {
         /*for(int i = 0; i < points.size(); i++) {
             Vector cur = points.get(i);
             Vector next = points.get((i + 1) % points.size());
@@ -48,7 +48,7 @@ public class Drawer {
             drawTriangle(canvas,
                     def,
                     points.get(i % n),
-                    points.get((i + 1) % n));
+                    points.get((i + 1) % n),k);
         }
     }
 
@@ -58,7 +58,7 @@ public class Drawer {
         line(canvas,t1,t2,Color.BLACK);
     }
 
-    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3) {
+    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3,int k) {
         Vector def = new Vector(0, 0, 50, 1);
 
         Vector t1 = canvas.getState().transform(p1);
@@ -73,7 +73,7 @@ public class Drawer {
             n = Vector.crossProduct(sb2, sb1);
         }
         double d = Vector.dotProduct(def,n);
-        if(Vector.dotProduct(def,n) < 0) {
+        if(k*Vector.dotProduct(def,n) < 0) {
             line(canvas, t1, t2, Color.BLACK);
             line(canvas, t1, t3, Color.BLACK);
             line(canvas, t2, t3, Color.BLACK);

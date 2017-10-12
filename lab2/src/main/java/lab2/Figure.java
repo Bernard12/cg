@@ -32,10 +32,10 @@ public class Figure {
         }
     }
 
-    public void draw(MyCanvas canvas) {
+    public void draw(MyCanvas canvas,int k) {
         Drawer drawer = new Drawer();
-        drawer.draw(canvas, firstLevel);
-        drawer.draw(canvas, secondLevel);
+        drawer.draw(canvas, firstLevel,k);
+        drawer.draw(canvas, secondLevel,k);
     }
 
     public ArrayList<Vector> getFirstLevel() {
