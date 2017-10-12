@@ -59,9 +59,25 @@ public class Drawer {
     }
 
     public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3) {
-        draw(canvas,p1,p2);
-        draw(canvas,p1,p3);
-        draw(canvas,p2,p3);
+        Vector def = new Vector(0, 0, 50, 1);
+
+        Vector t1 = canvas.getState().transform(p1);
+        Vector t2 = canvas.getState().transform(p2);
+        Vector t3 = canvas.getState().transform(p3);
+
+
+        Vector sb1 = Vector.sub(t1, t2);
+        Vector sb2 = Vector.sub(t1, t3);
+        Vector n = Vector.crossProduct(sb1, sb2);
+        if (Vector.tripleProduct(sb1, sb2, n) < 0) {
+            n = Vector.crossProduct(sb2, sb1);
+        }
+        double d = Vector.dotProduct(def,n);
+        if(Vector.dotProduct(def,n) < 0) {
+            line(canvas, t1, t2, Color.BLACK);
+            line(canvas, t1, t3, Color.BLACK);
+            line(canvas, t2, t3, Color.BLACK);
+        }
     }
 
     public void rVector(MyCanvas canvas, Vector p) {

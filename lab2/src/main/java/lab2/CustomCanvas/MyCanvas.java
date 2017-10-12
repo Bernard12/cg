@@ -48,20 +48,18 @@ public class MyCanvas extends Canvas {
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
         drawer.draw(this,fig.getFirstLevel());
-        drawer.draw(this,fig.getSecondLevel());
+        //drawer.draw(this,fig.getSecondLevel());
         int n = fig.getFirstLevel().size();
         for(int i = 0; i < n;i++) {
-            drawer.drawTriangle(this,
+            /*drawer.drawTriangle(this,
                     fig.getFirstLevel().get(i % n),
                     fig.getFirstLevel().get((i + 1) % n),
-                    fig.getSecondLevel().get(i % n));
-            drawer.drawTriangle(this,
+                    fig.getSecondLevel().get(i % n));*/
+            /*drawer.drawTriangle(this,
                     fig.getSecondLevel().get(i % n),
                     fig.getSecondLevel().get((i + 1) % n),
-                    fig.getFirstLevel().get((i + 1) % n));
+                    fig.getFirstLevel().get((i + 1) % n));*/
         }
-
-        int a = 5/2;
     }
 
     public TMatrix getState() {

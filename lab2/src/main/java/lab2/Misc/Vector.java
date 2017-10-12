@@ -1,5 +1,6 @@
 package lab2.Misc;
 
+
 public class Vector {
 
     private final double x, y, z,h;
@@ -36,6 +37,17 @@ public class Vector {
                 b.getZ() - a.getZ(),
                 b.getH()
         );
+    }
+
+    public static double degree(Vector a, Vector b){
+        double res = Vector.dotProduct(a,b);
+        res /= a.lenght();
+        res /= b.lenght();
+        return Math.toDegrees(Math.acos(res));
+    }
+
+    private final double lenght(){
+        return Math.sqrt(x*x + y*y + z*z);
     }
 
     public final double getX() {
