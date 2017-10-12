@@ -29,6 +29,15 @@ public class Vector {
         return dotProduct(a,crossProduct(b,c));
     }
 
+    public static Vector sub(Vector a,Vector b) {
+        return new Vector(
+                b.getX() - a.getX(),
+                b.getY() - a.getY(),
+                b.getZ() - a.getZ(),
+                b.getH()
+        );
+    }
+
     public final double getX() {
         return this.x;
     }
