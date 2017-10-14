@@ -72,8 +72,14 @@ public class Drawer {
         if (Vector.tripleProduct(sb1, sb2, n) < 0) {
             n = Vector.crossProduct(sb2, sb1);
         }
-        double d = Vector.dotProduct(def,n);
-        if(k*Vector.dotProduct(def,n) < 0) {
+        double d = Vector.dotProduct(def, n);
+        Vector v = canvas.getState().transform(new Vector(0, 0, 10, 1));
+        Vector c = Vector.sub(t1, v);
+        int kk = 1;
+        if (Vector.dotProduct(c, n) < 0) {
+            kk = -1;
+        }
+        if (kk * Vector.dotProduct(def, n) < 0) {
             line(canvas, t1, t2, Color.BLACK);
             line(canvas, t1, t3, Color.BLACK);
             line(canvas, t2, t3, Color.BLACK);
