@@ -24,7 +24,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Slider majorTickUnit="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
+                        <Slider fx:id="approx" majorTickUnit="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
@@ -38,7 +38,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Slider majorTickUnit="10.0" max="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
+                        <Slider fx:id="sides" majorTickUnit="10.0" max="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
@@ -56,7 +56,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                        <Slider fx:id="red" majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
@@ -70,7 +70,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                        <Slider fx:id="green" majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
@@ -84,7 +84,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                        <Slider fx:id="blue" majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>

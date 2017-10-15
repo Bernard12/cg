@@ -1,6 +1,7 @@
 package lab3;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -12,6 +13,21 @@ public class Controller {
 
     @FXML
     private AnchorPane center;
+
+    @FXML
+    private Slider approx;
+
+    @FXML
+    private Slider sides;
+
+    @FXML
+    private Slider red;
+
+    @FXML
+    private Slider green;
+
+    @FXML
+    private Slider blue;
 
     @FXML
     private void initialize() {
@@ -44,7 +60,9 @@ public class Controller {
 
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED,rot);
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,rot);
+
+
+
         center.getChildren().add(canvas);
     }
-
 }
