@@ -32,7 +32,7 @@ public class Light {
 
         gc.fillPolygon(
                 new double[]{t1.getX() * h + xCenter, t2.getX() * h + xCenter, t3.getX() * h + xCenter},
-                new double[]{-t1.getY() * h + yCenter, -t2.getY() * h + yCenter, -t3.getY() * h + yCenter},
+                new double[]{-t1.getY() * h + yCenter + 50, -t2.getY() * h + yCenter + 50, -t3.getY() * h + yCenter + 50},
                 3);
     }
 }

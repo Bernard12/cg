@@ -1,10 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab3.Controller">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab3.Controller">
    <center>
       <AnchorPane fx:id="center" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <HBox prefHeight="111.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="111.0" prefWidth="402.0">
+               <children>
+                  <VBox prefHeight="111.0" prefWidth="331.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="124.0" text="approximation">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Slider majorTickUnit="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="111.0" prefWidth="332.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="117.0" text="sides">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Slider majorTickUnit="10.0" max="30.0" min="10.0" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="111.0" prefWidth="432.0">
+               <children>
+                  <VBox prefHeight="111.0" prefWidth="141.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="59.0" text="red" textFill="RED">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="111.0" prefWidth="144.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="72.0" text="green" textFill="LIME">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="111.0" prefWidth="119.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="62.0" text="blue" textFill="BLUE">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Slider majorTickUnit="127.0" max="255.0" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

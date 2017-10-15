@@ -94,8 +94,8 @@ public class Drawer {
         double h1 = p1.getH();
         double h2 = p2.getH();
         gc.strokeLine(
-                p1.getX() * h1 + xCenter, -p1.getY() * h1 + yCenter,
-                p2.getX() * h2 + xCenter, -p2.getY() * h2 + yCenter);
+                p1.getX() * h1 + xCenter, -p1.getY() * h1 + yCenter + 50,
+                p2.getX() * h2 + xCenter, -p2.getY() * h2 + yCenter + 50);
     }
 
 }
