@@ -3,7 +3,9 @@ package lab3;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import lab3.CustomCanvas.MyCanvas;
+import lab3.Misc.Light;
 import lab3.Misc.TMatrix;
 
 public class Controller {
@@ -24,6 +26,7 @@ public class Controller {
         MyCanvas canvas = new MyCanvas(
                 center.getPrefWidth(),
                 center.getPrefHeight(),
+                new Light(Color.BLACK),
                 state
         );
 

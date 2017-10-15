@@ -1,6 +1,8 @@
 package lab3;
 
+import javafx.scene.paint.Color;
 import lab3.CustomCanvas.MyCanvas;
+import lab3.Misc.Light;
 import lab3.Misc.Vector;
 
 import java.util.ArrayList;
@@ -8,7 +10,6 @@ import java.util.ArrayList;
 public class Figure {
     private ArrayList<ArrayList<Vector>> levels;
     private double h, k, r, sides;
-
     /**
      * @param r base radius
      */

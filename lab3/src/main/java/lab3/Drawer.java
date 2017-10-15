@@ -72,7 +72,9 @@ public class Drawer {
         if (Vector.dotProduct(c, n) < 0) {
             kk = -1;
         }
-        if (kk * Vector.dotProduct(def, n) < 0) {
+        if (kk * d < 0) {
+            double inten = d/(def.lenght()*n.lenght());
+            canvas.getLight().fillPolygon(canvas,p1,p2,p3,inten);
             line(canvas, t1, t2, Color.BLACK);
             line(canvas, t1, t3, Color.BLACK);
             line(canvas, t2, t3, Color.BLACK);
@@ -91,7 +93,6 @@ public class Drawer {
         gc.setStroke(color);
         double h1 = p1.getH();
         double h2 = p2.getH();
-        int a = 5/2;
         gc.strokeLine(
                 p1.getX() * h1 + xCenter, -p1.getY() * h1 + yCenter,
                 p2.getX() * h2 + xCenter, -p2.getY() * h2 + yCenter);

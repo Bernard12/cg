@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lab3.Drawer;
 import lab3.Figure;
+import lab3.Misc.Light;
 import lab3.Misc.TMatrix;
 
 
@@ -15,8 +16,11 @@ public class MyCanvas extends Canvas {
     private double initWidth;
     private double initHeight;
 
-    public MyCanvas(double width, double height, TMatrix m) {
+    private Light light;
+
+    public MyCanvas(double width, double height,Light l ,TMatrix m) {
         super(width, height);
+        light = l;
         state = m;
         initWidth = width;
         initHeight = height;
@@ -60,5 +64,13 @@ public class MyCanvas extends Canvas {
 
     public Figure getFig() {
         return fig;
+    }
+
+    public void setLight(Light light) {
+        this.light = light;
+    }
+
+    public Light getLight() {
+        return light;
     }
 }
