@@ -51,7 +51,7 @@ public class MyCanvas extends Canvas {
         gc.fillRect(0, 0, getWidth(), getHeight());
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
-        fig.draw(this, 10);
+        fig.draw(this);
     }
 
     public TMatrix getState() {

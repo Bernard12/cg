@@ -61,7 +61,11 @@ public class Controller {
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED,rot);
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,rot);
 
-
+        approx.valueProperty().addListener((observableValue, oldV, newV) -> {
+            System.out.println(newV);
+            fig.setApprox((int)newV.doubleValue());
+            canvas.resize(canvas.getWidth(),canvas.getHeight());
+        });
 
         center.getChildren().add(canvas);
     }
