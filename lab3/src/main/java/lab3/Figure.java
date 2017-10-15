@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 public class Figure {
     private ArrayList<ArrayList<Vector>> levels;
-    private double h, k, r, sides;
+    private double h, k, r;
 
-    private int approx;
+    private int approx,sides;
 
     /**
      * @param r base radius
      */
-    Figure(double r, double sides) {
+    Figure(double r, int sides) {
         this.levels = new ArrayList<>();
         this.r = r;
         this.sides = sides;
@@ -47,13 +47,13 @@ public class Figure {
         this.levels.clear();
         generatePoints();
         int n = this.levels.size();
-        int sides = this.levels.get(0).size();
+        int sides = this.sides;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < sides; j++) {
                 drawer.drawTriangle(canvas,
                         this.levels.get(i).get(j % sides),
                         this.levels.get(i).get((j + 1) % sides),
-                        this.levels.get(i + 1).get(j % n));
+                        this.levels.get(i + 1).get(j % sides));
                 drawer.drawTriangle(canvas,
                         this.levels.get(i + 1).get(j % sides),
                         this.levels.get(i + 1).get((j + 1) % sides),
@@ -113,7 +113,7 @@ public class Figure {
         this.r = r;
     }
 
-    public void setSides(double sides) {
+    public void setSides(int sides) {
         this.sides = sides;
     }
 

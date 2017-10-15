@@ -67,6 +67,11 @@ public class Controller {
             canvas.resize(canvas.getWidth(),canvas.getHeight());
         });
 
+        sides.valueProperty().addListener(((observableValue, oldV, newV) -> {
+            fig.setSides((int) newV.doubleValue());
+            canvas.resize(canvas.getWidth(), canvas.getHeight());
+        }));
+
         center.getChildren().add(canvas);
     }
 }
