@@ -30,13 +30,6 @@ public class Drawer {
     }
 
     public void draw(MyCanvas canvas, List<Vector> points,int k) {
-        /*for(int i = 0; i < points.size(); i++) {
-            Vector cur = points.get(i);
-            Vector next = points.get((i + 1) % points.size());
-            cur = canvas.getState().transform(cur);
-            next = canvas.getState().transform(next);
-            line(canvas,cur,next,Color.BLACK);
-        }*/
         Vector def = new Vector(
                 0,
                 0,

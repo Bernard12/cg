@@ -1,7 +1,6 @@
 package lab3;
 
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lab3.CustomCanvas.MyCanvas;
@@ -27,7 +26,8 @@ public class Controller {
                 center.getPrefHeight(),
                 state
         );
-        Figure fig = new Figure(50,25);
+
+        Figure fig = new Figure(30,10);
         canvas.setFig(fig);
         double width = center.getPrefWidth();
         double height = center.getPrefHeight();
