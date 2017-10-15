@@ -38,11 +38,11 @@ public class Controller {
                 {0, 0, 0, 2}}
         );
 
-
+        Light l = new Light(0,0,0);
         MyCanvas canvas = new MyCanvas(
                 center.getPrefWidth(),
                 center.getPrefHeight(),
-                new Light(Color.BLACK),
+                l,
                 state
         );
 
@@ -69,6 +69,21 @@ public class Controller {
 
         sides.valueProperty().addListener(((observableValue, oldV, newV) -> {
             fig.setSides((int) newV.doubleValue());
+            canvas.resize(canvas.getWidth(), canvas.getHeight());
+        }));
+
+        red.valueProperty().addListener(((observableValue, oldV, newV) -> {
+            l.setR((int)newV.doubleValue());
+            canvas.resize(canvas.getWidth(), canvas.getHeight());
+        }));
+
+        green.valueProperty().addListener(((observableValue, oldV, newV) -> {
+            l.setG((int)newV.doubleValue());
+            canvas.resize(canvas.getWidth(), canvas.getHeight());
+        }));
+
+        blue.valueProperty().addListener(((observableValue, oldV, newV) -> {
+            l.setB((int)newV.doubleValue());
             canvas.resize(canvas.getWidth(), canvas.getHeight());
         }));
 

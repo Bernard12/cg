@@ -73,8 +73,8 @@ public class Drawer {
             kk = -1;
         }
         if (kk * d < 0) {
-            double inten = d/(def.lenght()*n.lenght());
-            canvas.getLight().fillPolygon(canvas,p1,p2,p3,inten);
+            double inten = Math.abs(d/(def.lenght()*n.lenght()));
+            canvas.getLight().fillPolygon(canvas,p1,p2,p3,Color.BLACK,inten);
             line(canvas, t1, t2, Color.BLACK);
             line(canvas, t1, t3, Color.BLACK);
             line(canvas, t2, t3, Color.BLACK);

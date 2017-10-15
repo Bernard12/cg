@@ -6,19 +6,21 @@ import javafx.scene.paint.Color;
 import lab3.CustomCanvas.MyCanvas;
 
 public class Light {
-    private Color color;
+    private int r,g,b;
 
-    public Light(Color color) {
-        this.color = color;
+    public Light(int r,int g,int b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 
-    public void fillPolygon(MyCanvas canvas, Vector p1, Vector p2, Vector p3, double inten) {
+    public void fillPolygon(MyCanvas canvas, Vector p1, Vector p2, Vector p3,Color col, double inten) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(
                 Color.rgb(
-                        (int)(Math.abs(255*inten)),
-                        (int)(Math.abs(255*inten)),
-                        (int)(Math.abs(255*inten))
+                        Math.min((int) ((col.getRed() + this.r)*inten),255),
+                        Math.min((int) ((col.getGreen() + this.g)*inten),255),
+                        Math.min((int) ((col.getBlue() + this.b)*inten),255)
                 )
         );
 
@@ -34,5 +36,29 @@ public class Light {
                 new double[]{t1.getX() * h + xCenter, t2.getX() * h + xCenter, t3.getX() * h + xCenter},
                 new double[]{-t1.getY() * h + yCenter + 50, -t2.getY() * h + yCenter + 50, -t3.getY() * h + yCenter + 50},
                 3);
+    }
+
+    public int getR() {
+        return r;
+    }
+
+    public void setR(int r) {
+        this.r = r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public void setB(int b) {
+        this.b = b;
     }
 }
