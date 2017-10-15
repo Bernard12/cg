@@ -63,7 +63,7 @@ public class Controller {
 
         approx.valueProperty().addListener((observableValue, oldV, newV) -> {
             System.out.println(newV);
-            fig.setApprox((int)newV.doubleValue());
+            fig.setApprox(2*(int)newV.doubleValue());
             canvas.resize(canvas.getWidth(),canvas.getHeight());
         });
 

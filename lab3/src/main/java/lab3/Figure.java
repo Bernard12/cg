@@ -26,7 +26,7 @@ public class Figure {
     }
     private void generatePoints() {
         double part = 0;
-        for (; part < h; ) {
+        for (int i = 0; i <= approx; i++) {
             /*double t = h * i / approx;*/
             double radius = func(part) + getR();
             double cur = 0;
@@ -61,7 +61,7 @@ public class Figure {
             }
         }
         Vector center1 = new Vector(0, 0, 0, 1);
-        Vector center2 = new Vector(0, 0, h, 1);
+        Vector center2 = new Vector(0, 0, levels.get(n-1).get(0).getZ(), 1);
         for (int i = 0; i < sides; i++) {
             drawer.drawTriangle(canvas,
                     center1,
