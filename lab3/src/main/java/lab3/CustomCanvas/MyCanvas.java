@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lab3.Drawer;
 import lab3.Figure;
+import lab3.Misc.Light;
 import lab3.Misc.TMatrix;
 
 
@@ -15,8 +16,11 @@ public class MyCanvas extends Canvas {
     private double initWidth;
     private double initHeight;
 
-    public MyCanvas(double width, double height,TMatrix m) {
+    private Light light;
+
+    public MyCanvas(double width, double height,Light l ,TMatrix m) {
         super(width, height);
+        light = l;
         state = m;
         initWidth = width;
         initHeight = height;
@@ -47,19 +51,7 @@ public class MyCanvas extends Canvas {
         gc.fillRect(0, 0, getWidth(), getHeight());
         Drawer drawer = new Drawer();
         drawer.initCord(this, state);
-        drawer.draw(this,fig.getFirstLevel(),1);
-        drawer.draw(this,fig.getSecondLevel(),-1);
-        int n = fig.getFirstLevel().size();
-        for(int i = 0; i < n;i++) {
-            drawer.drawTriangle(this,
-                    fig.getFirstLevel().get(i % n),
-                    fig.getFirstLevel().get((i + 1) % n),
-                    fig.getSecondLevel().get(i % n),-1);
-            drawer.drawTriangle(this,
-                    fig.getSecondLevel().get(i % n),
-                    fig.getSecondLevel().get((i + 1) % n),
-                    fig.getFirstLevel().get((i + 1) % n),1);
-        }
+        fig.draw(this, 10);
     }
 
     public TMatrix getState() {
@@ -72,5 +64,13 @@ public class MyCanvas extends Canvas {
 
     public Figure getFig() {
         return fig;
+    }
+
+    public void setLight(Light light) {
+        this.light = light;
+    }
+
+    public Light getLight() {
+        return light;
     }
 }

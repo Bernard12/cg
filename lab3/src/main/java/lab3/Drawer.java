@@ -30,13 +30,6 @@ public class Drawer {
     }
 
     public void draw(MyCanvas canvas, List<Vector> points,int k) {
-        /*for(int i = 0; i < points.size(); i++) {
-            Vector cur = points.get(i);
-            Vector next = points.get((i + 1) % points.size());
-            cur = canvas.getState().transform(cur);
-            next = canvas.getState().transform(next);
-            line(canvas,cur,next,Color.BLACK);
-        }*/
         Vector def = new Vector(
                 0,
                 0,
@@ -48,7 +41,7 @@ public class Drawer {
             drawTriangle(canvas,
                     def,
                     points.get(i % n),
-                    points.get((i + 1) % n),k);
+                    points.get((i + 1) % n));
         }
     }
 
@@ -58,7 +51,7 @@ public class Drawer {
         line(canvas,t1,t2,Color.BLACK);
     }
 
-    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3,int k) {
+    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3) {
         Vector def = new Vector(0, 0, 50, 1);
 
         Vector t1 = canvas.getState().transform(p1);
@@ -79,7 +72,9 @@ public class Drawer {
         if (Vector.dotProduct(c, n) < 0) {
             kk = -1;
         }
-        if (kk * Vector.dotProduct(def, n) < 0) {
+        if (kk * d < 0) {
+            double inten = d/(def.lenght()*n.lenght());
+            canvas.getLight().fillPolygon(canvas,p1,p2,p3,inten);
             line(canvas, t1, t2, Color.BLACK);
             line(canvas, t1, t3, Color.BLACK);
             line(canvas, t2, t3, Color.BLACK);
@@ -98,7 +93,6 @@ public class Drawer {
         gc.setStroke(color);
         double h1 = p1.getH();
         double h2 = p2.getH();
-        int a = 5/2;
         gc.strokeLine(
                 p1.getX() * h1 + xCenter, -p1.getY() * h1 + yCenter,
                 p2.getX() * h2 + xCenter, -p2.getY() * h2 + yCenter);

@@ -46,7 +46,7 @@ public class Vector {
         return Math.toDegrees(Math.acos(res));
     }
 
-    private final double lenght(){
+    public final double lenght(){
         return Math.sqrt(x*x + y*y + z*z);
     }
 

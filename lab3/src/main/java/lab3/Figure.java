@@ -1,56 +1,85 @@
 package lab3;
 
+import javafx.scene.paint.Color;
 import lab3.CustomCanvas.MyCanvas;
+import lab3.Misc.Light;
 import lab3.Misc.Vector;
 
 import java.util.ArrayList;
 
 public class Figure {
-    private ArrayList<Vector> firstLevel, secondLevel;
-    private double r1, r2;
-
-    Figure(double lowRad, double highRad) {
-        r1 = lowRad;
-        r2 = highRad;
-        firstLevel = new ArrayList<>();
-        secondLevel = new ArrayList<>();
-        generatePoints(4);
+    private ArrayList<ArrayList<Vector>> levels;
+    private double h, k, r, sides;
+    /**
+     * @param r base radius
+     */
+    Figure(double r, double sides) {
+        this.levels = new ArrayList<>();
+        this.r = r;
+        this.sides = sides;
+        this.h = 100;
+        this.k = 1;
     }
 
-    private void generatePoints(int k) {
-        double cur = 0;
-        for (int i = 0; i < k; i++) {
-            double x1 = r1 * Math.cos(cur * Math.PI / 180);
-            double y1 = r1 * Math.sin(cur * Math.PI / 180);
-            double z1 = 0;
-            firstLevel.add(new Vector(x1, y1, z1, 1));
-            double x2 = r2 * Math.cos(cur * Math.PI / 180);
-            double y2 = r2 * Math.sin(cur * Math.PI / 180);
-            double z2 = 25;
-            secondLevel.add(new Vector(x2, y2, z2, 1));
-            cur += 360 / k;
+    private void generatePoints(int levels) {
+        int phases = (int) h / levels;
+        for (int i = 0; i <= phases; i++) {
+            double radius = func(h*i/levels) + getR();
+            double cur = 0;
+            ArrayList<Vector> lev = new ArrayList<>();
+            for (int j = 0; j < sides; j++) {
+                double x = radius * Math.cos(cur * Math.PI / 180);
+                double y = radius * Math.sin(cur * Math.PI / 180);
+                double z = (i * h) / levels;
+                lev.add(new Vector(x, y, z, 1));
+                cur += 360 / sides;
+            }
+            this.levels.add(lev);
+        }
+
+    }
+
+    public void draw(MyCanvas canvas, int levels) {
+        Drawer drawer = new Drawer();
+        this.levels.clear();
+        generatePoints(levels);
+        int n = this.levels.size();
+        int sides = this.levels.get(0).size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < sides; j++) {
+                drawer.drawTriangle(canvas,
+                        this.levels.get(i).get(j % sides),
+                        this.levels.get(i).get((j + 1) % sides),
+                        this.levels.get(i + 1).get(j % n));
+                drawer.drawTriangle(canvas,
+                        this.levels.get(i + 1).get(j % sides),
+                        this.levels.get(i + 1).get((j + 1) % sides),
+                        this.levels.get(i).get((j+1) % sides));
+            }
+        }
+        Vector center1 = new Vector(0, 0, 0, 1);
+        Vector center2 = new Vector(0, 0, h, 1);
+        for (int i = 0; i < sides; i++) {
+            drawer.drawTriangle(canvas,
+                    center1,
+                    this.levels.get(0).get(i % sides),
+                    this.levels.get(0).get((i + 1) % sides));
+            drawer.drawTriangle(canvas,
+                    center2,
+                    this.levels.get(n-1).get(i % sides),
+                    this.levels.get(n-1).get((i + 1) % sides));
         }
     }
 
-    public void draw(MyCanvas canvas,int k) {
-        Drawer drawer = new Drawer();
-        drawer.draw(canvas, firstLevel,k);
-        drawer.draw(canvas, secondLevel,k);
+    private double func(double x) {
+        return (-1 * (x * x / h) + x) * k;
     }
 
-    public ArrayList<Vector> getFirstLevel() {
-        return firstLevel;
+    public double getR() {
+        return r;
+    }
+    public double getSides() {
+        return sides;
     }
 
-    public ArrayList<Vector> getSecondLevel() {
-        return secondLevel;
-    }
-
-    public double getR1() {
-        return r1;
-    }
-
-    public double getR2() {
-        return r2;
-    }
 }
