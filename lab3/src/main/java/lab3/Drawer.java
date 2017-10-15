@@ -41,7 +41,7 @@ public class Drawer {
             drawTriangle(canvas,
                     def,
                     points.get(i % n),
-                    points.get((i + 1) % n),k);
+                    points.get((i + 1) % n));
         }
     }
 
@@ -51,7 +51,7 @@ public class Drawer {
         line(canvas,t1,t2,Color.BLACK);
     }
 
-    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3,int k) {
+    public void drawTriangle(MyCanvas canvas,Vector p1,Vector p2,Vector p3) {
         Vector def = new Vector(0, 0, 50, 1);
 
         Vector t1 = canvas.getState().transform(p1);

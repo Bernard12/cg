@@ -22,7 +22,7 @@ public class Figure {
 
     private void generatePoints(int levels) {
         int phases = (int) h / levels;
-        for (int i = 0; i < phases; i++) {
+        for (int i = 0; i <= phases; i++) {
             double radius = func(h*i/levels) + getR();
             double cur = 0;
             ArrayList<Vector> lev = new ArrayList<>();
@@ -49,14 +49,25 @@ public class Figure {
                 drawer.drawTriangle(canvas,
                         this.levels.get(i).get(j % sides),
                         this.levels.get(i).get((j + 1) % sides),
-                        this.levels.get(i+1).get(j % n), -1);
+                        this.levels.get(i + 1).get(j % n));
                 drawer.drawTriangle(canvas,
                         this.levels.get(i + 1).get(j % sides),
                         this.levels.get(i + 1).get((j + 1) % sides),
-                        this.levels.get(i).get((j) % sides), 1);
+                        this.levels.get(i).get((j+1) % sides));
             }
         }
-
+        Vector center1 = new Vector(0, 0, 0, 1);
+        Vector center2 = new Vector(0, 0, h, 1);
+        for (int i = 0; i < sides; i++) {
+            drawer.drawTriangle(canvas,
+                    center1,
+                    this.levels.get(0).get(i % sides),
+                    this.levels.get(0).get((i + 1) % sides));
+            drawer.drawTriangle(canvas,
+                    center2,
+                    this.levels.get(n-1).get(i % sides),
+                    this.levels.get(n-1).get((i + 1) % sides));
+        }
     }
 
     private double func(double x) {
