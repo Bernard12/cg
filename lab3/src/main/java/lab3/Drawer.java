@@ -1,12 +1,12 @@
-package lab2;
+package lab3;
 
 import com.sun.scenario.effect.impl.prism.PrImage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import lab2.CustomCanvas.MyCanvas;
-import lab2.Misc.TMatrix;
-import lab2.Misc.Vector;
+import lab3.CustomCanvas.MyCanvas;
+import lab3.Misc.TMatrix;
+import lab3.Misc.Vector;
 
 import java.util.List;
 
