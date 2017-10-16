@@ -5,7 +5,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 import lab1.CustomCanvas.MyCanvas;
 import lab1.Misc.TMatrix;
-
+/*
+    Class to connect view(data from window) and logic
+ */
 public class Controller {
 
     @FXML

@@ -1,6 +1,6 @@
 package lab1.Misc;
 
-
+// matrix for linear transform
 public class TMatrix {
 
     private final double[][] matrix;
