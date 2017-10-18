@@ -26,7 +26,12 @@
         </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-opengl</artifactId>
+            <artifactId>lwjgl-glfw</artifactId>
+            <version>${lwjgl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-opengles</artifactId>
             <version>${lwjgl.version}</version>
         </dependency>
         <dependency>
@@ -38,7 +43,14 @@
         </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-opengl</artifactId>
+            <artifactId>lwjgl-glfw</artifactId>
+            <version>${lwjgl.version}</version>
+            <classifier>${lwjgl.natives}</classifier>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-opengles</artifactId>
             <version>${lwjgl.version}</version>
             <classifier>${lwjgl.natives}</classifier>
             <scope>runtime</scope>
@@ -74,5 +86,7 @@
             </properties>
         </profile>
     </profiles>
+
+
 
 </project>
