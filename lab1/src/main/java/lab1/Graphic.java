@@ -20,6 +20,9 @@ public class Graphic {
         return params;
     }
 
+    /**
+     * @return array of points from A to B depends on parametrs
+     */
     private List<Vector> points(){
         double A, B, a, b, t;
         A = params[0].getValue();

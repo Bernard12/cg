@@ -14,6 +14,11 @@ public class Drawer {
     public Drawer() {
     }
 
+    /**
+     * Method creating and drawing coord system
+     * @param canvas where to draw
+     * @param state current state(rotation and scale)
+     */
     public void initCord(MyCanvas canvas, TMatrix state) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.WHEAT);
@@ -26,6 +31,13 @@ public class Drawer {
         line(canvas, zero, y, Color.RED);
     }
 
+
+    /**
+     * connect all points by lines
+     * @param canvas where to draw
+     * @param points array of points to draw
+     * @param state current state(rotation and scale)
+     */
     public void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
         for (int i = 1; i < points.size(); i++) {
             Vector t1 = points.get(i - 1);
@@ -36,11 +48,13 @@ public class Drawer {
         }
     }
 
-    public void rVector(MyCanvas canvas, Vector p) {
-        Vector zero = new Vector(0, 0, 1);
-        line(canvas, zero, p, Color.YELLOW);
-    }
-
+    /**
+     * Draw a line between points
+     * @param canvas where to draw
+     * @param p1 point 1
+     * @param p2 point 2
+     * @param color color of line
+     */
     private void line(MyCanvas canvas, Vector p1, Vector p2, Paint color) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         int xCenter = (int) canvas.getWidth() / 2;

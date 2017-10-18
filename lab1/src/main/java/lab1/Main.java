@@ -6,6 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Ivan Simakhin
+ * Option 17
+ * x = aφ - b*sinφ
+ * y = a - b*cosφ
+ * a<b A<=φ<=B
+ */
+
 public class Main extends Application {
 
     @Override

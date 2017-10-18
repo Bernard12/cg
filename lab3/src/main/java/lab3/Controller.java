@@ -62,26 +62,21 @@ public class Controller {
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,rot);
 
         approx.valueProperty().addListener((observableValue, oldV, newV) -> {
-            System.out.println(newV);
             fig.setApprox(2*(int)newV.doubleValue());
             canvas.resize(canvas.getWidth(),canvas.getHeight());
         });
-
         sides.valueProperty().addListener(((observableValue, oldV, newV) -> {
             fig.setSides((int) newV.doubleValue());
             canvas.resize(canvas.getWidth(), canvas.getHeight());
         }));
-
         red.valueProperty().addListener(((observableValue, oldV, newV) -> {
             l.setR((int)newV.doubleValue());
             canvas.resize(canvas.getWidth(), canvas.getHeight());
         }));
-
         green.valueProperty().addListener(((observableValue, oldV, newV) -> {
             l.setG((int)newV.doubleValue());
             canvas.resize(canvas.getWidth(), canvas.getHeight());
         }));
-
         blue.valueProperty().addListener(((observableValue, oldV, newV) -> {
             l.setB((int)newV.doubleValue());
             canvas.resize(canvas.getWidth(), canvas.getHeight());

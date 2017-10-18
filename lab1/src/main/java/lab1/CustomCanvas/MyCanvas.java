@@ -7,6 +7,9 @@ import lab1.Drawer;
 import lab1.Misc.TMatrix;
 
 
+/**
+ * Custom resizable canvas
+ */
 public class MyCanvas extends Canvas {
 
     private TMatrix state;

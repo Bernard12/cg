@@ -9,6 +9,10 @@ public class TMatrix {
         this.matrix = matrix;
     }
 
+    /**
+     * @param vector input vector
+     * @return vector after matrix product
+     */
     public Vector transform(Vector vector) {
         double _00 = this.matrix[0][0];
         double _01 = this.matrix[0][1];
