@@ -1,6 +1,5 @@
 package lab2;
 
-import com.sun.scenario.effect.impl.prism.PrImage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -10,6 +9,9 @@ import lab2.Misc.Vector;
 
 import java.util.List;
 
+/**
+ * Utility class used for draw line, hide hidden layers ect.
+ */
 public class Drawer {
 
     public Drawer() {

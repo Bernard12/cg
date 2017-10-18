@@ -6,6 +6,9 @@ import javafx.scene.input.MouseEvent;
 import lab2.CustomCanvas.MyCanvas;
 import lab2.Misc.TMatrix;
 
+/**
+ * Class listener used to rotate figure
+ */
 public class RotationHandler implements EventHandler<MouseEvent> {
 
     private MyCanvas canvas;

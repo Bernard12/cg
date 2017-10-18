@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Ivan Simakhin
+ * Option 17
+ * 4-side Frustum
+ */
 public class Main extends Application {
 
     @Override

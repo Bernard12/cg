@@ -5,6 +5,9 @@ import lab2.Misc.Vector;
 
 import java.util.ArrayList;
 
+/**
+ * Class containing all point of Frustum
+ */
 public class Figure {
     private ArrayList<Vector> firstLevel, secondLevel;
     private double r1, r2;
