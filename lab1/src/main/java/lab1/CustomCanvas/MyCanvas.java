@@ -6,10 +6,7 @@ import javafx.scene.paint.Color;
 import lab1.Drawer;
 import lab1.Misc.TMatrix;
 
-
-/**
- * Custom resizable canvas
- */
+// Custom resizable canvas
 public class MyCanvas extends Canvas {
 
     private TMatrix state;

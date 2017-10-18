@@ -8,6 +8,10 @@ import lab1.Misc.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+   @author Ivan Simakhin
+ Functional class for drawing my curve with presetted params
+ */
 public class Graphic {
 
     private final Slider[] params;

@@ -9,16 +9,16 @@ import lab1.Misc.Vector;
 
 import java.util.List;
 
+/**
+ * @author Ivan Simakhin
+ * Functional class to draw lines between 2 point
+ */
 public class Drawer {
 
     public Drawer() {
     }
 
-    /**
-     * Method creating and drawing coord system
-     * @param canvas where to draw
-     * @param state current state(rotation and scale)
-     */
+    // Draw coodrinate system
     public void initCord(MyCanvas canvas, TMatrix state) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.WHEAT);
@@ -30,15 +30,8 @@ public class Drawer {
         line(canvas, zero, x, Color.GREEN);
         line(canvas, zero, y, Color.RED);
     }
-
-
-    /**
-     * connect all points by lines
-     * @param canvas where to draw
-     * @param points array of points to draw
-     * @param state current state(rotation and scale)
-     */
-    public void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
+    // draw array of points
+    void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
         for (int i = 1; i < points.size(); i++) {
             Vector t1 = points.get(i - 1);
             Vector t2 = points.get(i);
@@ -47,14 +40,7 @@ public class Drawer {
             line(canvas, firstPoint, secondPoint, Color.GOLDENROD);
         }
     }
-
-    /**
-     * Draw a line between points
-     * @param canvas where to draw
-     * @param p1 point 1
-     * @param p2 point 2
-     * @param color color of line
-     */
+    // connect 2 point with a line
     private void line(MyCanvas canvas, Vector p1, Vector p2, Paint color) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         int xCenter = (int) canvas.getWidth() / 2;
