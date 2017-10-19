@@ -28,7 +28,7 @@ public class Application {
     private double aspect;
     private int initWidth, initHeight;
 
-    public Application(int w, int h) {
+    private Application(int w, int h) {
         m = new Matrix4f().identity();
         aspect = 1;
         initWidth = w;
@@ -62,9 +62,6 @@ public class Application {
         win = glfwCreateWindow(600, 600, "Лабораторная работа №4", 0, 0);
         glfwSetWindowSizeLimits(win, 400, 400, 900, 900);
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
-            if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
-                rot = !rot; // We will detect this in the rendering loop
-            }
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
             }
@@ -163,8 +160,11 @@ public class Application {
             // Load transform matrix
             glLoadMatrixf(m.get(fb));
 
+            glColor3f(1,0,0);
             modelX.render();
+            glColor3f(0,1,0);
             modelY.render();
+            glColor3f(0,0,1);
             modelZ.render();
             //modelX.render();
 

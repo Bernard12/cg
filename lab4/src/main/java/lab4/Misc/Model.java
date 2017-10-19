@@ -27,15 +27,17 @@ public class Model {
 
     public void render(){
         glEnableClientState(GL_VERTEX_ARRAY);
+        {
 
-        glBindBuffer(GL_ARRAY_BUFFER,vertexId);
+            glBindBuffer(GL_ARRAY_BUFFER, vertexId);
+            {
+                glVertexPointer(3, GL_FLOAT, 0, 0);
+                glDrawArrays(GL_LINE_LOOP, 0, drawCount);
 
-        glVertexPointer(3,GL_FLOAT,0,0);
-        glDrawArrays(GL_LINE_LOOP,0,drawCount);
+            }
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-        glBindBuffer(GL_ARRAY_BUFFER,0);
-
-
+        }
         glDisableClientState(GL_VERTEX_ARRAY);
     }
 }
