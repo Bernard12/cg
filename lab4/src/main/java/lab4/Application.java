@@ -1,5 +1,6 @@
 package lab4;
 
+import lab4.Misc.Model;
 import lab4.Misc.Vector;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -90,6 +91,7 @@ public class Application {
             //m.scale((float) aspect);
             //int mn = Math.max(w,h);
             glViewport(0, 0, w, h);
+            glOrtho(0,w,h,0,-1,1);
         });
 
         try (MemoryStack stack = stackPush()) {
@@ -125,9 +127,6 @@ public class Application {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
-
-        glViewport(0, 0, 600, 600);
-
         // Set the clear color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
 
@@ -135,19 +134,39 @@ public class Application {
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
 
-        Vector4f center = new Vector4f(0, 0, 0, 1);
+        /*Vector4f center = new Vector4f(0, 0, 0, 1);
         Vector4f axisX = new Vector4f(1, 0, 0, 1);
         Vector4f axisY = new Vector4f(0, 1, 0, 1);
-        Vector4f axisZ = new Vector4f(0, 0, 1, 1);
+        Vector4f axisZ = new Vector4f(0, 0, 1, 1);*/
+        float[] axisX = new float[]{
+                0,0,0,
+                1,0,0
+        };
+        Model modelX = new Model(axisX);
+
+        float[] axisy = new float[]{
+                0,0,0,
+                0,1,0
+        };
+        Model modelY = new Model(axisy);
+
+        float[] axisz = new float[]{
+                0,0,0,
+                0,0,1
+        };
+        Model modelZ = new Model(axisz);
+
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.5f);
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-            byte zero = 127;
             // Load transform matrix
             glLoadMatrixf(m.get(fb));
 
-            glColor3ui(255,0,0);
+            modelX.render();
+            modelY.render();
+            modelZ.render();
+            //modelX.render();
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
