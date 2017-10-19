@@ -16,6 +16,7 @@ import static org.lwjgl.system.MemoryUtil.*;
 public class Main {
 
     private long win;
+    private float f1 = 0;
 
     private void start(){
         init();
@@ -41,11 +42,12 @@ public class Main {
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-        win = glfwCreateWindow(400, 400, "Huita", 0, 0);
+        win = glfwCreateWindow(400, 400, "Лабораторная работа №4", 0, 0);
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
         });
+
         try(MemoryStack stack = stackPush()){
             IntBuffer pWidth = stack.mallocInt(1); // int*
             IntBuffer pHeight = stack.mallocInt(1); // int*
@@ -81,15 +83,23 @@ public class Main {
         GL.createCapabilities();
 
         // Set the clear color
-        glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(245.0f/255, 222.0f/255, 179.0f/255, 0.0f);
 
+        glEnable(GL_DEPTH_TEST);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
+
         while ( !glfwWindowShouldClose(win) ) {
+
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+
+            glBegin(GL_LINE_LOOP);
+                glVertex2f(0.f, 0.f);
+                glVertex2f(0.5f, 0.0f);
+                glVertex2f(0.0f, 0.5f);
+            glEnd();
+
             glfwSwapBuffers(win); // swap the color buffers
-            // Poll for window events. The key callback above will only be
-            // invoked during this call.
             glfwPollEvents();
         }
     }
