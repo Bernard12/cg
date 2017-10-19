@@ -1,11 +1,14 @@
 package lab4;
 
+import lab4.Misc.Vector;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.FloatBuffer;
@@ -56,7 +59,7 @@ public class Application {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         win = glfwCreateWindow(600, 600, "Лабораторная работа №4", 0, 0);
-        glfwSetWindowSizeLimits(win, 600, 600, GLFW_DONT_CARE, GLFW_DONT_CARE);
+        glfwSetWindowSizeLimits(win, 400, 400, 900, 900);
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
                 rot = !rot; // We will detect this in the rendering loop
@@ -85,6 +88,7 @@ public class Application {
         glfwSetFramebufferSizeCallback(win, (win, w, h) -> {
             //aspect = Math.max(w/600.,h/600.);
             //m.scale((float) aspect);
+            //int mn = Math.max(w,h);
             glViewport(0, 0, w, h);
         });
 
@@ -136,35 +140,21 @@ public class Application {
         Vector4f axisY = new Vector4f(0, 1, 0, 1);
         Vector4f axisZ = new Vector4f(0, 0, 1, 1);
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
+        m.scale(0.5f);
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             byte zero = 127;
             // Load transform matrix
             glLoadMatrixf(m.get(fb));
 
-            glColor3b(zero, zero, zero);
-
-            glBegin(GL_LINE_LOOP);
-                glVertex2f(center.x, center.y);
-                glVertex2f(axisX.x, axisX.y);
-            glEnd();
-
-            glBegin(GL_LINE_LOOP);
-                glVertex2f(center.x, center.y);
-                glVertex2f(axisY.x, axisY.y);
-            glEnd();
-
-            glBegin(GL_LINE_LOOP);
-                glVertex2f(center.x, center.y);
-                glVertex2f(axisZ.x, axisZ.y);
-            glEnd();
+            glColor3ui(255,0,0);
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         new Application(600, 600).start();
     }
 }
