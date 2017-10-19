@@ -1,15 +1,11 @@
 package lab4;
 
 import lab4.Misc.Model;
-import lab4.Misc.Vector;
 import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.FloatBuffer;
@@ -159,7 +155,9 @@ public class Application {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
             glLoadMatrixf(m.get(fb));
-
+            if (glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS) {
+                System.out.println("hohho");
+            }
             glColor3f(1,0,0);
             modelX.render();
             glColor3f(0,1,0);
