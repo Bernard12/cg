@@ -8,6 +8,7 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
+import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -80,9 +81,6 @@ public class Application {
         });
 
         glfwSetFramebufferSizeCallback(win, (win, w, h) -> {
-            //aspect = Math.max(w/600.,h/600.);
-            //m.scale((float) aspect);
-            //int mn = Math.max(w,h);
             glViewport(0, 0, w, h);
             glOrtho(0,w,h,0,-1,1);
         });
@@ -156,7 +154,13 @@ public class Application {
             // Load transform matrix
             glLoadMatrixf(m.get(fb));
             if (glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS) {
+                DoubleBuffer posX = BufferUtils.createDoubleBuffer(1);
+                DoubleBuffer posY = BufferUtils.createDoubleBuffer(1);
                 System.out.println("hohho");
+                glfwGetCursorPos(win, posX, posY);
+                double x = posX.get(0);
+                double y = posY.get(0);
+                System.out.println(x + " " + y);
             }
             glColor3f(1,0,0);
             modelX.render();
