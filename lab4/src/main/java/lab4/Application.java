@@ -22,14 +22,10 @@ public class Application {
     private long win;
     private boolean rot = false;
     private Matrix4f m;
-    private double aspect;
-    private int initWidth, initHeight;
+    private double curX, curY;
 
-    private Application(int w, int h) {
+    private Application() {
         m = new Matrix4f().identity();
-        aspect = 1;
-        initWidth = w;
-        initHeight = h;
     }
 
     private void start() {
@@ -82,11 +78,17 @@ public class Application {
 
         glfwSetFramebufferSizeCallback(win, (win, w, h) -> {
             glViewport(0, 0, w, h);
-            glOrtho(0,w,h,0,-1,1);
+            glOrtho(0, w, h, 0, -1, 1);
+        });
+
+        glfwSetMouseButtonCallback(win,(win,but,act,mods) ->{
+            if(but == GLFW_MOUSE_BUTTON_1 && mods == GLFW_PRESS){
+                System.out.println("hohoo");
+            }
         });
 
         try (MemoryStack stack = stackPush()) {
-            IntBuffer pWidth = stack.mallocInt(1); // int*
+            IntBuffer pWidth = stack.mallocInt(1); //    int*
             IntBuffer pHeight = stack.mallocInt(1); // int*
 
             // Get the window size passed to glfwCreateWindow
@@ -156,11 +158,17 @@ public class Application {
             if (glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS) {
                 DoubleBuffer posX = BufferUtils.createDoubleBuffer(1);
                 DoubleBuffer posY = BufferUtils.createDoubleBuffer(1);
-                System.out.println("hohho");
+                //System.out.println("hohho");
                 glfwGetCursorPos(win, posX, posY);
                 double x = posX.get(0);
                 double y = posY.get(0);
+                int dy = (int) (x - curX);
+                int dx = (int) (y - curY);
                 System.out.println(x + " " + y);
+                m.rotateY((float) Math.toRadians(-dy));
+                m.rotateX((float) Math.toRadians(dx));
+                curX = x;
+                curY = y;
             }
             glColor3f(1,0,0);
             modelX.render();
@@ -176,6 +184,6 @@ public class Application {
     }
 
     public static void main(String[] args) throws Exception {
-        new Application(600, 600).start();
+        new Application().start();
     }
 }
