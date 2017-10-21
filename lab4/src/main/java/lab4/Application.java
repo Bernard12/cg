@@ -1,6 +1,7 @@
 package lab4;
 
 import lab4.Misc.Model;
+import lab4.Misc.Shader;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -158,6 +159,7 @@ public class Application {
 
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.5f);
+        Shader shader = new Shader("simple");
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
@@ -184,6 +186,8 @@ public class Application {
             glColor3f(0,0,1);
             modelZ.render();
             //modelX.render();
+
+            //shader.bind();
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
