@@ -12,7 +12,7 @@ public class Model {
     private int drawCount;
     private int vertexId;
 
-    public Model(float[] vertices){
+    public Model(float[] vertices) {
         drawCount = vertices.length / 3;
 
         FloatBuffer buffer = BufferUtils.createFloatBuffer(vertices.length);
@@ -20,12 +20,12 @@ public class Model {
         buffer.flip();
 
         vertexId = glGenBuffers();
-        glBindBuffer(GL_ARRAY_BUFFER,vertexId);
-        glBufferData(GL_ARRAY_BUFFER,buffer,GL_STATIC_DRAW);
-        glBindBuffer(GL_ARRAY_BUFFER,0);
+        glBindBuffer(GL_ARRAY_BUFFER, vertexId);
+        glBufferData(GL_ARRAY_BUFFER, buffer, GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    public void render(){
+    public void render() {
         glEnableClientState(GL_VERTEX_ARRAY);
         {
 
@@ -33,7 +33,6 @@ public class Model {
             {
                 glVertexPointer(3, GL_FLOAT, 0, 0);
                 glDrawArrays(GL_LINE_LOOP, 0, drawCount);
-
             }
             glBindBuffer(GL_ARRAY_BUFFER, 0);
 

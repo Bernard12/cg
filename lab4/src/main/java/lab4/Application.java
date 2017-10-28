@@ -128,10 +128,17 @@ public class Application {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+/*        glEnable(GL_TEXTURE_2D);
+
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        glFrontFace(GL_CCW);*/
+
+        glDepthRange(0.0,1.0);
+        glEnable(GL_DEPTH_TEST);
         // Set the clear color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
 
-        glEnable(GL_DEPTH_TEST);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
 
@@ -160,6 +167,7 @@ public class Application {
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.5f);
         Shader shader = new Shader("simple");
+        Figure figure = new Figure(5,10);
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
@@ -186,7 +194,7 @@ public class Application {
             glColor3f(0,0,1);
             modelZ.render();
             //modelX.render();
-
+            figure.draw();
             //shader.bind();
 
             glfwSwapBuffers(win); // swap the color buffers
