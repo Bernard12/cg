@@ -59,11 +59,11 @@ public class Figure {
         for(int i = 0; i < sides; i++) {
             Vector4f v1 = list.get(0).get(i % sides);
             Vector4f v2 = list.get(0).get((i + 1) % sides);
-            /*triangles.add(new Model(new float[]{
+            triangles.add(new Model(new float[]{
                     center1.x, center1.y, center1.z,
                     v1.x, v1.y, v1.z,
                     v2.x, v2.y, v2.z,
-            }));*/
+            }));
 
             v1 = list.get(list.size() - 1).get(i % sides);
             v2 = list.get(list.size() - 1).get((i + 1) % sides);

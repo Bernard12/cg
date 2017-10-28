@@ -37,6 +37,10 @@ public class Model {
                 1);
     }
 
+    private double dot(Vector4f a, Vector4f b) {
+        return a.x * b.x + a.y * b.y + a.z * b.z;
+    }
+
     public void render(Matrix4f m) {
         double d = -1;
         if(m!=null) {
@@ -53,11 +57,11 @@ public class Model {
             Vector4f sb2 = v3.sub(v1);
             Vector4f n = crossProduct(sb1,sb2);
             Vector4f tmp = inner.sub(v1);
-            if(n.dot(tmp) > 0){
+            if(dot(n,tmp) > 0){
                 n.negate();
             }
             Vector4f view = new Vector4f(0,0,50,1);
-            if(n.dot(view) > 0){
+            if(dot(n,view) > 0){
                 d = -1;
             }else {
                 d = 1;
