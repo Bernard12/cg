@@ -2,6 +2,7 @@ package lab4;
 
 import lab4.Misc.Model;
 import lab4.Misc.Shader;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -128,24 +129,13 @@ public class Application {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
-/*        glEnable(GL_TEXTURE_2D);
 
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_BACK);
-        glFrontFace(GL_CCW);*/
-
-        glDepthRange(0.0,1.0);
-        glEnable(GL_DEPTH_TEST);
-        // Set the clear color
+        // Set the background color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
 
-        /*Vector4f center = new Vector4f(0, 0, 0, 1);
-        Vector4f axisX = new Vector4f(1, 0, 0, 1);
-        Vector4f axisY = new Vector4f(0, 1, 0, 1);
-        Vector4f axisZ = new Vector4f(0, 0, 1, 1);*/
         float[] axisX = new float[]{
                 0,0,0,
                 1,0,0
@@ -188,13 +178,13 @@ public class Application {
                 curY = y;
             }
             glColor3f(1,0,0);
-            modelX.render();
+            modelX.render(null);
             glColor3f(0,1,0);
-            modelY.render();
+            modelY.render(null);
             glColor3f(0,0,1);
-            modelZ.render();
+            modelZ.render(null);
             //modelX.render();
-            figure.draw();
+            figure.draw(m);
             //shader.bind();
 
             glfwSwapBuffers(win); // swap the color buffers

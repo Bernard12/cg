@@ -4,6 +4,7 @@ package lab4;
 import lab4.Misc.Model;
 import lombok.Getter;
 import lombok.Setter;
+import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class Figure {
     private void generateTriangles(){
         float part = 0;
         ArrayList<ArrayList<Vector4f>> list = new ArrayList<>();
-        for (int i = 0; i <= approx; i++) {
+        for (int i = 0; i < approx; i++) {
             /*double t = h * i / approx;*/
             double radius = func(part) + getR();
             double cur = 0;
@@ -58,11 +59,11 @@ public class Figure {
         for(int i = 0; i < sides; i++) {
             Vector4f v1 = list.get(0).get(i % sides);
             Vector4f v2 = list.get(0).get((i + 1) % sides);
-            triangles.add(new Model(new float[]{
+            /*triangles.add(new Model(new float[]{
                     center1.x, center1.y, center1.z,
                     v1.x, v1.y, v1.z,
                     v2.x, v2.y, v2.z,
-            }));
+            }));*/
 
             v1 = list.get(list.size() - 1).get(i % sides);
             v2 = list.get(list.size() - 1).get((i + 1) % sides);
@@ -74,10 +75,10 @@ public class Figure {
         }
     }
 
-    void draw(){
+    void draw(Matrix4f m){
         for(Model model: triangles){
             glColor3f(0,0,0);
-            model.render();
+            model.render(m);
         }
     }
 }
