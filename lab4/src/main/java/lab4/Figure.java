@@ -39,7 +39,7 @@ public class Figure {
     private void generateTriangles(){
         float part = 0;
         ArrayList<ArrayList<Vector4f>> list = new ArrayList<>();
-        for (int i = 0; i < approx; i++) {
+        for (int i = 0; i <= approx; i++) {
             /*double t = h * i / approx;*/
             double radius = func(part) + getR();
             double cur = 0;
