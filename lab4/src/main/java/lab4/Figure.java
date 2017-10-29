@@ -2,6 +2,7 @@ package lab4;
 
 
 import lab4.Misc.Model;
+import lab4.Misc.Shader;
 import lombok.Getter;
 import lombok.Setter;
 import org.joml.Matrix4f;
@@ -95,10 +96,10 @@ public class Figure {
         }
     }
 
-    void draw(Matrix4f m){
+    void draw(Matrix4f m, Shader shader){
         for(Model model: triangles){
             glColor3f(0,0,0);
-            model.render(m);
+            model.render(m, shader);
         }
     }
 }

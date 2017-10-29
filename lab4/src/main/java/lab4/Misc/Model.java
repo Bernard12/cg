@@ -41,13 +41,18 @@ public class Model {
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
-    public void render(Matrix4f m) {
+    private double length(Vector4f a){
+        return Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
+    }
+
+    public void render(Matrix4f m, Shader shader) {
         double d = -1;
+        float intens = 1;
         if(m!=null) {
             Vector4f v1 = new Vector4f(verts[0], verts[1], verts[2], 1);
             Vector4f v2 = new Vector4f(verts[3], verts[4], verts[5], 1);
             Vector4f v3 = new Vector4f(verts[6], verts[7], verts[8], 1);
-            Vector4f inner = new Vector4f(0,0,0.01f,1);
+            Vector4f inner = new Vector4f(0, 0, 0.01f, 1);
             m.transform(v1);
             m.transform(v2);
             m.transform(v3);
@@ -55,15 +60,16 @@ public class Model {
 
             Vector4f sb1 = v2.sub(v1);
             Vector4f sb2 = v3.sub(v1);
-            Vector4f n = crossProduct(sb1,sb2);
+            Vector4f n = crossProduct(sb1, sb2);
             Vector4f tmp = inner.sub(v1);
-            if(dot(n,tmp) > 0){
+            if (dot(n, tmp) > 0) {
                 n.negate();
             }
-            Vector4f view = new Vector4f(0,0,50,1);
-            if(dot(n,view) > 0){
+            Vector4f view = new Vector4f(0, 0, 50, 1);
+            if (dot(n, view) > 0) {
                 d = -1;
-            }else {
+                intens = (float) (dot(n, view) / (length(n) * length(view)));
+            } else {
                 d = 1;
             }
         }
@@ -74,7 +80,12 @@ public class Model {
                 glBindBuffer(GL_ARRAY_BUFFER, vertexId);
                 {
                     glVertexPointer(3, GL_FLOAT, 0, 0);
-                    glDrawArrays(GL_LINE_LOOP, 0, drawCount);
+                    if(m == null){
+                        glDrawArrays(GL_LINE_LOOP, 0, drawCount);
+                    }else {
+                        shader.setUniform("intens",intens);
+                        glDrawArrays(GL_TRIANGLES, 0, drawCount);
+                    }
                 }
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
 

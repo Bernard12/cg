@@ -2,7 +2,6 @@ package lab4;
 
 import lab4.Misc.Model;
 import lab4.Misc.Shader;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -181,15 +180,15 @@ public class Application {
 
             }
             shader.setColor(1,0,0);
-            modelX.render(null);
+            modelX.render(null, null);
             shader.setColor(0,1,0);
-            modelY.render(null);
+            modelY.render(null, null);
             shader.setColor(0,0,1);
-            modelZ.render(null);
-            shader.setColor(0,0,0);
+            modelZ.render(null, null);
+            shader.setColor(46/255.f,209/255.f,195/255.f);
             shader.bind();
             shader.setUniform("project",m);
-            figure.draw(m);
+            figure.draw(m,shader);
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
