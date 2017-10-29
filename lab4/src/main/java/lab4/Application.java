@@ -129,6 +129,8 @@ public class Application {
         // bindings available for use.
         GL.createCapabilities();
 
+        glEnable(GL_TEXTURE_2D);
+
         // Set the background color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
 
@@ -136,27 +138,27 @@ public class Application {
         // the window or has pressed the ESCAPE key.
 
         float[] axisX = new float[]{
-                0,0,0,
-                1,0,0
+                0, 0, 0,
+                1, 0, 0
         };
         Model modelX = new Model(axisX);
 
         float[] axisy = new float[]{
-                0,0,0,
-                0,1,0
+                0, 0, 0,
+                0, 1, 0
         };
         Model modelY = new Model(axisy);
 
         float[] axisz = new float[]{
-                0,0,0,
-                0,0,1
+                0, 0, 0,
+                0, 0, 1
         };
         Model modelZ = new Model(axisz);
 
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.5f);
         Shader shader = new Shader("simple");
-        Figure figure = new Figure(5,10);
+        Figure figure = new Figure(5, 10);
         boolean bnd = false;
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
@@ -176,6 +178,7 @@ public class Application {
                 m.rotateX((float) Math.toRadians(dx));
                 curX = x;
                 curY = y;
+
             }
             if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_PRESS) {
                 bnd = !bnd;
@@ -188,11 +191,8 @@ public class Application {
             modelZ.render(null);*/
             //modelX.render();
             //shader.bind();
-            if(bnd){
-                shader.bind();
-            }else{
-                shader.unbind();
-            }
+            shader.bind();
+            shader.setUniform("green", 1);
             figure.draw(m);
             //shader.bind();
 

@@ -1,5 +1,7 @@
 #version 120
 
+uniform int green;
+
 void main() {
-    gl_FragColor = vec4(1,0,0,1);
+    gl_FragColor = vec4(1,green,0,1);
 }
