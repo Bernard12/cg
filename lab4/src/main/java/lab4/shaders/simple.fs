@@ -1,7 +1,9 @@
 #version 450
 
-uniform int green;
+uniform float red = 0;
+uniform float green = 0;
+uniform float blue = 0;
 
 void main() {
-    gl_FragColor = vec4(1,green,0,1);
+    gl_FragColor = vec4(red,green,blue,1);
 }

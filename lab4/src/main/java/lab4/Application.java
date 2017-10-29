@@ -180,22 +180,16 @@ public class Application {
                 curY = y;
 
             }
-            if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_PRESS) {
-                bnd = !bnd;
-            }
-            /*glColor3f(1,0,0);
+            shader.setColor(1,0,0);
             modelX.render(null);
-            glColor3f(0,1,0);
+            shader.setColor(0,1,0);
             modelY.render(null);
-            glColor3f(0,0,1);
-            modelZ.render(null);*/
-            //modelX.render();
-            //shader.bind();
+            shader.setColor(0,0,1);
+            modelZ.render(null);
+            shader.setColor(0,0,0);
             shader.bind();
-            shader.setUniform("green", 1);
             shader.setUniform("project",m);
             figure.draw(m);
-            //shader.bind();
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
