@@ -22,7 +22,6 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 public class Application {
 
     private long win;
-    private boolean usedBefore = false;
     private Matrix4f m;
     private double curX, curY;
 
@@ -116,7 +115,7 @@ public class Application {
 
         glfwMakeContextCurrent(win);
         // Enable v-sync
-        glfwSwapInterval(0);
+        glfwSwapInterval(1);
 
         // Make the window visible
         glfwShowWindow(win);
@@ -158,6 +157,7 @@ public class Application {
         m.scale(0.5f);
         Shader shader = new Shader("simple");
         Figure figure = new Figure(5,10);
+        boolean bnd = false;
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
@@ -177,13 +177,22 @@ public class Application {
                 curX = x;
                 curY = y;
             }
-            glColor3f(1,0,0);
+            if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_PRESS) {
+                bnd = !bnd;
+            }
+            /*glColor3f(1,0,0);
             modelX.render(null);
             glColor3f(0,1,0);
             modelY.render(null);
             glColor3f(0,0,1);
-            modelZ.render(null);
+            modelZ.render(null);*/
             //modelX.render();
+            //shader.bind();
+            if(bnd){
+                shader.bind();
+            }else{
+                shader.unbind();
+            }
             figure.draw(m);
             //shader.bind();
 

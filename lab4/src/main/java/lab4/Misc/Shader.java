@@ -51,6 +51,10 @@ public class Shader {
         glUseProgram(prog);
     }
 
+    public void unbind(){
+        glUseProgram(0);
+    }
+
     private String readFile(String fileName) {
         StringBuilder string = new StringBuilder();
         BufferedReader reader;
