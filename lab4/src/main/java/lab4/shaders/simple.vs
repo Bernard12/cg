@@ -1,7 +1,9 @@
-#version 120
+#version 450
 
 attribute vec3 vert;
 
+uniform mat4 project;
+
 void main() {
-    gl_Position = vec4(vert,1);
+    gl_Position = project * vec4(vert,1);
 }

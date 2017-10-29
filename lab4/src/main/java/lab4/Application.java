@@ -193,6 +193,7 @@ public class Application {
             //shader.bind();
             shader.bind();
             shader.setUniform("green", 1);
+            shader.setUniform("project",m);
             figure.draw(m);
             //shader.bind();
 
