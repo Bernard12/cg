@@ -28,7 +28,7 @@ public class Figure {
         this.r = r;
         this.h = 50;
         this.k = 1;
-        this.approx = 10;
+        this.approx = 25;
         triangles = new ArrayList<>();
         generateTriangles();
     }
@@ -49,7 +49,7 @@ public class Figure {
                 float x = (float) (radius * Math.cos(cur * Math.PI / 180));
                 float y = (float) (radius * Math.sin(cur * Math.PI / 180));
                 lev.add(new Vector4f(x / 50, y / 50, part / 50, 1));
-                cur += 360 / sides;
+                cur += 360. / sides;
             }
             part += h / approx;
             list.add(lev);

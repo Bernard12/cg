@@ -155,9 +155,9 @@ public class Application {
         Model modelZ = new Model(axisz);
 
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
-        m.scale(0.5f);
+        m.scale(0.8f);
         Shader shader = new Shader("simple");
-        Figure figure = new Figure(5, 10);
+        Figure figure = new Figure(5, 100);
         boolean bnd = false;
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
@@ -177,14 +177,7 @@ public class Application {
                 m.rotateX((float) Math.toRadians(dx));
                 curX = x;
                 curY = y;
-
             }
-            shader.setColor(1,0,0);
-            modelX.render(null, null);
-            shader.setColor(0,1,0);
-            modelY.render(null, null);
-            shader.setColor(0,0,1);
-            modelZ.render(null, null);
             shader.setColor(46/255.f,209/255.f,195/255.f);
             shader.bind();
             shader.setUniform("project",m);
