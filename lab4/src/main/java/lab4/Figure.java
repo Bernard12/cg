@@ -36,7 +36,7 @@ public class Figure {
         return (-1 * (x * x / h) + x) * k + 5;
     }
 
-    private void generateTriangles(){
+    private void generateTriangles() {
         float part = 0;
         ArrayList<ArrayList<Vector4f>> list = new ArrayList<>();
         for (int i = 0; i <= approx; i++) {
@@ -47,16 +47,16 @@ public class Figure {
             for (int j = 0; j < sides; j++) {
                 float x = (float) (radius * Math.cos(cur * Math.PI / 180));
                 float y = (float) (radius * Math.sin(cur * Math.PI / 180));
-                lev.add(new Vector4f(x/50, y/50, part/50, 1));
+                lev.add(new Vector4f(x / 50, y / 50, part / 50, 1));
                 cur += 360 / sides;
             }
             part += h / approx;
             list.add(lev);
         }
         float last = list.get(list.size() - 1).get(0).z;
-        Vector4f center1 = new Vector4f(0,0,0,1);
-        Vector4f center2 = new Vector4f(0,0,last,1);
-        for(int i = 0; i < sides; i++) {
+        Vector4f center1 = new Vector4f(0, 0, 0, 1);
+        Vector4f center2 = new Vector4f(0, 0, last, 1);
+        for (int i = 0; i < sides; i++) {
             Vector4f v1 = list.get(0).get(i % sides);
             Vector4f v2 = list.get(0).get((i + 1) % sides);
             triangles.add(new Model(new float[]{
@@ -72,6 +72,26 @@ public class Figure {
                     v1.x, v1.y, v1.z,
                     v2.x, v2.y, v2.z,
             }));
+        }
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = 0; j < list.get(0).size(); j++) {
+                Vector4f v1 = list.get(i).get(j % sides);
+                Vector4f v2 = list.get(i).get((j + 1) % sides);
+                Vector4f v3 = list.get(i + 1).get(j % sides);
+                triangles.add(new Model(new float[]{
+                        v1.x, v1.y, v1.z,
+                        v2.x, v2.y, v2.z,
+                        v3.x, v3.y, v3.z,
+                }));
+                v1 = list.get(i + 1).get(j % sides);
+                v2 = list.get(i + 1).get((j + 1) % sides);
+                v3 = list.get(i).get((j+1) % sides);
+                triangles.add(new Model(new float[]{
+                        v1.x, v1.y, v1.z,
+                        v2.x, v2.y, v2.z,
+                        v3.x, v3.y, v3.z,
+                }));
+            }
         }
     }
 
