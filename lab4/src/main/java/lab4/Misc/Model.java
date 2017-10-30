@@ -82,10 +82,8 @@ public class Model {
                 {
                     glVertexPointer(3, GL_FLOAT, 0, 0);
                     if(m == null){
-                        shader.setUniform("intens",1);
                         glDrawArrays(GL_LINE_LOOP, 0, drawCount);
                     }else {
-                        shader.setUniform("intens",intens);
                         glDrawArrays(GL_TRIANGLES, 0, drawCount);
                     }
                 }
