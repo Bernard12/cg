@@ -6,7 +6,7 @@ uniform float blue = 0;
 
 
 uniform vec3 col;
-uniform vec3 light = vec(0,0,1);
+uniform vec3 light = vec3(0,0,1);
 uniform vec3 Normal;
 
 float dotok(vec4 a, vec4 b){
@@ -14,11 +14,10 @@ float dotok(vec4 a, vec4 b){
 }
 
 vec4 calc(){
-    vec3 n = normalize(-Normal);
-    float diff = dot(light,n);
+    float diff = dot(Normal,light)/(length(Normal)*length(light));
     vec3 amb = 0.3 * col;
-    vec3 diffuse = diff * amb;
-    return vec4(amb,1);
+    vec3 diffuse = diff * col;
+    return vec4(amb + diffuse,1);
 }
 
 void main() {

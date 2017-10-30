@@ -47,8 +47,6 @@ public class Model {
 
     public void render(Matrix4f m, Shader shader) {
         double d = -1;
-        float intens = 1;
-
         if(m!=null) {
             Vector4f v1 = new Vector4f(verts[0], verts[1], verts[2], 1);
             Vector4f v2 = new Vector4f(verts[3], verts[4], verts[5], 1);
@@ -77,7 +75,6 @@ public class Model {
         if(d<0) {
             glEnableClientState(GL_VERTEX_ARRAY);
             {
-
                 glBindBuffer(GL_ARRAY_BUFFER, vertexId);
                 {
                     glVertexPointer(3, GL_FLOAT, 0, 0);
