@@ -36,9 +36,6 @@ public class Main extends Application{
     private double curX, curY;
     public static float red,green,blue;
 
-    @FXML
-    private Slider r;
-
     private void st() {
         initial();
         loop();
@@ -143,6 +140,7 @@ public class Main extends Application{
         Shader shader = new Shader("simple");
         Figure figure = new Figure(5, 100);
         boolean bnd = false;
+        float light[] = new float[]{0.5f,0.5f,0.5f,0.5f};
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
