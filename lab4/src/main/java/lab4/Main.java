@@ -1,6 +1,12 @@
 package lab4;
 
-import lab4.Misc.Model;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 import lab4.Misc.Shader;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
@@ -23,18 +29,18 @@ import static org.lwjgl.system.MemoryStack.stackPush;
  * Option 22
  * Barrel
  */
-public class Main {
+public class Main extends Application{
 
     private long win;
-    private Matrix4f m;
+    private Matrix4f m = new Matrix4f().identity();
     private double curX, curY;
+    private float red,green,blue;
 
-    private Main() {
-        m = new Matrix4f().identity();
-    }
+    @FXML
+    private Slider r;
 
     private void start() {
-        init();
+        initial();
         loop();
 
         glfwFreeCallbacks(win);
@@ -45,11 +51,11 @@ public class Main {
         glfwSetErrorCallback(null).free();
     }
 
-    private void init() {
+    private void initial() {
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!glfwInit()) {
-            throw new IllegalStateException("Unable to init GLFW");
+            throw new IllegalStateException("Unable to initial GLFW");
         }
 
         glfwDefaultWindowHints();
@@ -132,25 +138,6 @@ public class Main {
 
         // Set the background color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
-
-        float[] axisX = new float[]{
-                0, 0, 0,
-                1, 0, 0
-        };
-        Model modelX = new Model(axisX);
-
-        float[] axisy = new float[]{
-                0, 0, 0,
-                0, 1, 0
-        };
-        Model modelY = new Model(axisy);
-
-        float[] axisz = new float[]{
-                0, 0, 0,
-                0, 0, 1
-        };
-        Model modelZ = new Model(axisz);
-
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.8f);
         Shader shader = new Shader("simple");
@@ -186,7 +173,24 @@ public class Main {
         }
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        final Parent root = FXMLLoader.load(getClass().getResource("/lab4.fxml"));
+        final Scene scene = new Scene(root);
+        stage.setTitle("Лабораторная работа №3(Бочка), Симахин Иван");
+        stage.setScene(scene);
+        stage.show();
+        stage.setMinWidth(scene.getWindow().getWidth());
+        stage.setMinHeight(scene.getWindow().getHeight());
+    }
+
+    public void init(){
+
+    }
+
     public static void main(String[] args) throws Exception {
+
+        launch(args);
 
         new Main().start();
     }
