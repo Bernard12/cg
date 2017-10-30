@@ -34,12 +34,12 @@ public class Main extends Application{
     private long win;
     private Matrix4f m = new Matrix4f().identity();
     private double curX, curY;
-    private float red,green,blue;
+    public static float red,green,blue;
 
     @FXML
     private Slider r;
 
-    private void start() {
+    private void st() {
         initial();
         loop();
 
@@ -163,7 +163,7 @@ public class Main extends Application{
                 curY = y;
             }
 
-            shader.setColor(46/255.f,209/255.f,195/255.f);
+            shader.setColor(red/255.f,green/255.f,blue/255.f);
             shader.bind();
             shader.setUniform("project",m);
             figure.draw(m,shader);
@@ -175,23 +175,18 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        final Parent root = FXMLLoader.load(getClass().getResource("/lab4.fxml"));
+        final Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab4.fxml"));
         final Scene scene = new Scene(root);
-        stage.setTitle("Лабораторная работа №3(Бочка), Симахин Иван");
+        stage.setTitle("Лабораторная работа №4(Бочка), Симахин Иван");
         stage.setScene(scene);
         stage.show();
         stage.setMinWidth(scene.getWindow().getWidth());
         stage.setMinHeight(scene.getWindow().getHeight());
     }
 
-    public void init(){
-
-    }
-
     public static void main(String[] args) throws Exception {
-
+        Main m = new Main();
         launch(args);
-
-        new Main().start();
+        m.st();
     }
 }

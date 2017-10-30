@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab4.Controller">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -63,6 +63,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" text="Build" BorderPane.alignment="CENTER" />
+      <Button fx:id="bt" mnemonicParsing="false" text="Build" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
