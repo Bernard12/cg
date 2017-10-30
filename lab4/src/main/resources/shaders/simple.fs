@@ -14,7 +14,8 @@ float dotok(vec4 a, vec4 b){
 }
 
 vec4 calc(){
-    float diff = dot(Normal,light)/(length(Normal)*length(light));
+    vec3 n = normalize(Normal);
+    float diff = dot(n,light);
     vec3 amb = 0.3 * col;
     vec3 diffuse = diff * col;
     return vec4(amb + diffuse,1);
