@@ -18,13 +18,18 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 
-public class Application {
+/**
+ * @author Simakhin Ivan
+ * Option 22
+ * Barrel
+ */
+public class Main {
 
     private long win;
     private Matrix4f m;
     private double curX, curY;
 
-    private Application() {
+    private Main() {
         m = new Matrix4f().identity();
     }
 
@@ -48,12 +53,13 @@ public class Application {
         }
 
         glfwDefaultWindowHints();
-        // window hint = window property?
+
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         win = glfwCreateWindow(600, 600, "Лабораторная работа №4", 0, 0);
         glfwSetWindowSizeLimits(win, 400, 400, 900, 900);
+
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
@@ -83,7 +89,6 @@ public class Application {
 
         glfwSetMouseButtonCallback(win,(win,button,action,mods) ->{
             if(button == GLFW_MOUSE_BUTTON_1 && action == GLFW_PRESS){
-                System.out.println("hohoo");
                 DoubleBuffer posX = BufferUtils.createDoubleBuffer(1);
                 DoubleBuffer posY = BufferUtils.createDoubleBuffer(1);
                 glfwGetCursorPos(win, posX, posY);
@@ -121,20 +126,12 @@ public class Application {
     }
 
     private void loop() {
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
         GL.createCapabilities();
 
         glEnable(GL_TEXTURE_2D);
 
         // Set the background color
         glClearColor(245.0f / 255, 222.0f / 255, 179.0f / 255, 0.0f);
-
-        // Run the rendering loop until the user has attempted to close
-        // the window or has pressed the ESCAPE key.
 
         float[] axisX = new float[]{
                 0, 0, 0,
@@ -178,6 +175,7 @@ public class Application {
                 curX = x;
                 curY = y;
             }
+
             shader.setColor(46/255.f,209/255.f,195/255.f);
             shader.bind();
             shader.setUniform("project",m);
@@ -189,6 +187,7 @@ public class Application {
     }
 
     public static void main(String[] args) throws Exception {
-        new Application().start();
+
+        new Main().start();
     }
 }

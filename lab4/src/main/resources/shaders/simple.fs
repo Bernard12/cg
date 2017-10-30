@@ -1,4 +1,4 @@
-#version 450
+#version 120
 
 uniform float red = 0;
 uniform float green = 0;

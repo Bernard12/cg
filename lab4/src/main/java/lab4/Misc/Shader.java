@@ -92,7 +92,9 @@ public class Shader {
         StringBuilder string = new StringBuilder();
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(new File("/home/ivan/IdeaProjects/cg/lab4/src/main/java/lab4/shaders/" + fileName)));
+            reader = new BufferedReader(
+                    new FileReader(
+                            new File(getClass().getResource("/shaders/"+fileName).toString().substring(5))));
             String line;
             while ((line = reader.readLine()) != null) {
                 string.append(line);
