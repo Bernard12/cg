@@ -9,6 +9,7 @@ import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import lab4.Misc.Shader;
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -34,7 +35,7 @@ public class Main extends Application{
     private long win;
     private Matrix4f m = new Matrix4f().identity();
     private double curX, curY;
-    public static float red,green,blue;
+    public static float red = 55,green = 12,blue = 126;
 
     private void st() {
         initial();
@@ -66,6 +67,7 @@ public class Main extends Application{
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
+                System.exit(0);
             }
             if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
                 System.out.println("UP");
@@ -138,7 +140,7 @@ public class Main extends Application{
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.8f);
         Shader shader = new Shader("simple");
-        Figure figure = new Figure(5, 100);
+        Figure figure = new Figure(5, 25);
         boolean bnd = false;
 
         while (!glfwWindowShouldClose(win)) {
@@ -161,7 +163,8 @@ public class Main extends Application{
                 curY = y;
             }
 
-            shader.setColor(red/255.f,green/255.f,blue/255.f);
+            //shader.setColor(red/255.f,green/255.f,blue/255.f);
+            shader.setUniform("col",new Vector4f(red/255.f,green/255.f,blue/255.f,1));
             shader.bind();
             shader.setUniform("project",m);
             figure.draw(m,shader);
@@ -184,7 +187,7 @@ public class Main extends Application{
 
     public static void main(String[] args) throws Exception {
         Main m = new Main();
-        launch(args);
+        //launch(args);
         m.st();
     }
 }

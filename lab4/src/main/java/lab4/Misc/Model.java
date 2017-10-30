@@ -48,6 +48,7 @@ public class Model {
     public void render(Matrix4f m, Shader shader) {
         double d = -1;
         float intens = 1;
+
         if(m!=null) {
             Vector4f v1 = new Vector4f(verts[0], verts[1], verts[2], 1);
             Vector4f v2 = new Vector4f(verts[3], verts[4], verts[5], 1);
@@ -68,8 +69,7 @@ public class Model {
             Vector4f view = new Vector4f(0, 0, 50, 1);
             if (dot(n, view) > 0) {
                 d = -1;
-                intens = (float) (dot(n, view) / (length(n) * length(view)));
-                intens *= intens;
+                shader.setUniform("Normal",n);
             } else {
                 d = 1;
             }

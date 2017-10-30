@@ -1,6 +1,7 @@
 package lab4.Misc;
 
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 
 import static org.lwjgl.opengl.GL20.*;
@@ -71,6 +72,13 @@ public class Shader {
         value.get(buffer);
         if(location != -1){
             glUniformMatrix4fv(location,false,buffer);
+        }
+    }
+
+    public void setUniform(String name,Vector4f value){
+        int location = glGetUniformLocation(prog,name);
+        if(location != -1){
+            glUniform3f(location,value.x,value.y,value.z);
         }
     }
 

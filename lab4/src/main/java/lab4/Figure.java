@@ -28,7 +28,7 @@ public class Figure {
         this.r = r;
         this.h = 50;
         this.k = 1;
-        this.approx = 25;
+        this.approx = 10;
         triangles = new ArrayList<>();
         generateTriangles();
     }
