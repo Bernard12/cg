@@ -140,7 +140,7 @@ public class Main extends Application{
         FloatBuffer fb = BufferUtils.createFloatBuffer(16);
         m.scale(0.8f);
         Shader shader = new Shader("simple");
-        Figure figure = new Figure(5, 25);
+        Figure figure = new Figure(5, 100);
         boolean bnd = false;
 
         while (!glfwWindowShouldClose(win)) {
