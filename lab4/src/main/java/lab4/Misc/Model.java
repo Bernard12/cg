@@ -45,13 +45,13 @@ public class Model {
         return Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
     }
 
-    public void render(Matrix4f m, Shader shader) {
+    public void render(Matrix4f m, Shader shader, int ang) {
         double d = -1;
         if(m!=null) {
-            Vector4f v1 = new Vector4f(verts[0], verts[1], verts[2], 1);
-            Vector4f v2 = new Vector4f(verts[3], verts[4], verts[5], 1);
-            Vector4f v3 = new Vector4f(verts[6], verts[7], verts[8], 1);
-            Vector4f inner = new Vector4f(0, 0, 0.01f, 1);
+            Vector4f v1 = new Vector4f(verts[0], verts[1], verts[2], 0);
+            Vector4f v2 = new Vector4f(verts[3], verts[4], verts[5], 0);
+            Vector4f v3 = new Vector4f(verts[6], verts[7], verts[8], 0);
+            Vector4f inner = new Vector4f(0, 0, 0.01f, 0);
             m.transform(v1);
             m.transform(v2);
             m.transform(v3);
@@ -64,14 +64,21 @@ public class Model {
             if (dot(n, tmp) > 0) {
                 n.negate();
             }
-            Vector4f view = new Vector4f(0, 0, 50, 1);
+            Vector4f view = new Vector4f(0, 0, 50, 0);
+            view.normalize();
+            n.normalize();
+            inner.normalize();
             if (dot(n, view) > 0) {
                 d = -1;
                 shader.setUniform("Normal",n);
+                m.transform(n);
+                double di = dot(n,view);
+                /*if(di > 0) {
+                    shader.setUniform("cs", (float) Math.cos(Math.toRadians(ang)));
+                }*/
             } else {
                 d = 1;
             }
-            m.transform(n);
         }
         if(d<0) {
             glEnableClientState(GL_VERTEX_ARRAY);

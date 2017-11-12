@@ -27,8 +27,9 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 
 /**
  * @author Simakhin Ivan
- * Option 22
  * Barrel
+ * Option 17 lab 6
+ *
  */
 public class Main extends Application{
 
@@ -167,11 +168,11 @@ public class Main extends Application{
             shader.setUniform("col", new Vector4f(red / 255.f, green / 255.f, blue / 255.f, 1));
             shader.bind();
             shader.setUniform("project", m);
-            shader.setUniform("cs", (float) Math.cos(Math.toRadians(angle)));
+            //shader.setUniform("cs", (float) Math.cos(Math.toRadians(angle)));
+
+            figure.draw(m, shader,angle);
             angle++;
             angle %= 360;
-            figure.draw(m, shader);
-
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
         }

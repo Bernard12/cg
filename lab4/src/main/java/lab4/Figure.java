@@ -96,10 +96,10 @@ public class Figure {
         }
     }
 
-    void draw(Matrix4f m, Shader shader){
+    void draw(Matrix4f m, Shader shader, int ang){
         for(Model model: triangles){
             glColor3f(0,0,0);
-            model.render(m, shader);
+            model.render(m, shader,ang);
         }
     }
 }
