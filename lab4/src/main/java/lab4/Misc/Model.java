@@ -71,6 +71,7 @@ public class Model {
             } else {
                 d = 1;
             }
+            m.transform(n);
         }
         if(d<0) {
             glEnableClientState(GL_VERTEX_ARRAY);
