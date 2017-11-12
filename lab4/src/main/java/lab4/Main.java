@@ -36,6 +36,7 @@ public class Main extends Application{
     private Matrix4f m = new Matrix4f().identity();
     private double curX, curY;
     public static float red = 55,green = 12,blue = 126;
+    public static float amb = 55,dif = 12,spec = 126;
 
     private void st() {
         initial();
@@ -187,7 +188,7 @@ public class Main extends Application{
 
     public static void main(String[] args) throws Exception {
         Main m = new Main();
-        //launch(args);
+        launch(args);
         m.st();
     }
 }
