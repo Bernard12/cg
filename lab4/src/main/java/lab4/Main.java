@@ -142,8 +142,7 @@ public class Main extends Application{
         m.scale(0.8f);
         Shader shader = new Shader("simple");
         Figure figure = new Figure(5, 100);
-        boolean bnd = false;
-
+        int angle = 0;
         while (!glfwWindowShouldClose(win)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             // Load transform matrix
@@ -165,10 +164,12 @@ public class Main extends Application{
             }
 
             //shader.setColor(red/255.f,green/255.f,blue/255.f);
-            shader.setUniform("col",new Vector4f(red/255.f,green/255.f,blue/255.f,1));
+            shader.setUniform("col", new Vector4f(red / 255.f, green / 255.f, blue / 255.f, 1));
             shader.bind();
-            shader.setUniform("project",m);
-            figure.draw(m,shader);
+            shader.setUniform("project", m);
+
+            angle %= 360;
+            figure.draw(m, shader);
 
             glfwSwapBuffers(win); // swap the color buffers
             glfwPollEvents();
