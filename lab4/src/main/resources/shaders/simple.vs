@@ -11,10 +11,6 @@ void main() {
     vec3 n = normalize(Normal);
     float c = dot(n,oz);
     vec4 pos;
-    if(c > 0){
-        pos = vec4(vert,1);
-    }else{
-        pos = vec4(vert,1);
-    }
+    pos = vec4((1+cs/3)*vert,1);
     gl_Position = project * pos;
 }

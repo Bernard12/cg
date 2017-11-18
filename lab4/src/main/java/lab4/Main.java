@@ -126,7 +126,7 @@ public class Main extends Application{
 
         glfwMakeContextCurrent(win);
         // Enable v-sync
-        glfwSwapInterval(1);
+        glfwSwapInterval(0);
 
         // Make the window visible
         glfwShowWindow(win);
@@ -135,6 +135,7 @@ public class Main extends Application{
     private void loop() {
         GL.createCapabilities();
 
+        System.out.println(glGetString(GL_VERSION));
         glEnable(GL_TEXTURE_2D);
 
         // Set the background color
@@ -168,7 +169,7 @@ public class Main extends Application{
             shader.setUniform("col", new Vector4f(red / 255.f, green / 255.f, blue / 255.f, 1));
             shader.bind();
             shader.setUniform("project", m);
-            //shader.setUniform("cs", (float) Math.cos(Math.toRadians(angle)));
+            shader.setUniform("cs", (float) Math.cos(Math.toRadians(angle)));
 
             figure.draw(m, shader,angle);
             angle++;
