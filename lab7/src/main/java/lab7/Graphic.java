@@ -7,6 +7,7 @@ import lab7.Misc.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
    @author Ivan Simakhin
@@ -15,9 +16,51 @@ import java.util.List;
 public class Graphic {
 
     private final Slider[] params;
+    private ArrayList<Function<Double,Double>> functions = new ArrayList<>();
 
     Graphic(Slider[] params) {
         this.params = params;
+        functions.add(t -> {
+            if (t > -10. && t < 0.) {
+                return (-t * t * t / 1000.);
+            } else {
+                return 0.;
+            }
+        }); // n_0
+        functions.add(t -> {
+            if (t > -10 && t < 0) {
+                return ((t + 10.) * t * t / 1000.) - (10. - t) * (3 * t * t + 20 * t - 100) / 4000.;
+            } else if (t > 0 && t < 10) {
+                return (10 - t) * (10 - t) * (10 - t) / 4000.;
+            } else {
+                return 0.;
+            }
+        }); // n 1
+        functions.add(t -> {
+            if (t > -10 && t < 0) {
+                return ((10 - t) * (t + 10) * (t + 10) / 4000.) - (t + 10) * (3 * t * t + 20 * t - 100) / 4000.;
+            } else if (t > 0 && t < 10) {
+                return ((t + 10) * (10 - t) * (10 - t) / 4000.) - (10 - t) * (3 * t * t - 20 * t - 100) / 4000.;
+            } else {
+                return 0.;
+            }
+        }); // n 2
+        functions.add(t -> {
+            if (t > -10 && t < 0) {
+                return (t + 10) * (t + 10) * (t + 10) / 4000.;
+            } else if (t > 0 && t < 10) {
+                return ((10 - t) * t * t / 1000.) - (t + 10) * (3 * t * t - 20 * t - 100) / 4000.;
+            } else {
+                return 0.;
+            }
+        }); // n 3
+        functions.add(t -> {
+            if (t > 0 && t < 10) {
+                return t * t * t / 1000.;
+            } else {
+                return 0.;
+            }
+        }); // n 4
     }
 
     public Slider[] getParams() {
@@ -28,22 +71,8 @@ public class Graphic {
      * @return array of points from A to B depends on parametrs
      */
     private List<Vector> points(){
-        double A, B, a, b, t;
-        A = params[0].getValue();
-        B = params[1].getValue();
-        a = params[2].getValue();
-        b = params[3].getValue();
-        t = params[4].getValue();
-        if (!(A <= B && a > 0 && b > 0)) {
-            return new ArrayList<>();
-        }
-        List<Vector> list = new ArrayList<>();
-        for (double i = A; i <= B; i += t) {
-            double x = a * i - b * Math.sin(i);
-            double y = a - b * Math.cos(i);
-            list.add(new Vector(x * 40, y * 40,1));
-        }
-        return list;
+
+        return null;
     }
 
     void draw(MyCanvas canvas, TMatrix state) {

@@ -3,6 +3,7 @@ package lab7;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import lab7.CustomCanvas.MyCanvas;
 import lab7.Misc.TMatrix;
 /*

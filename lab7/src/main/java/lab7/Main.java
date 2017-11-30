@@ -21,8 +21,8 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception{
-        final Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab7.fxml"));
-        final Scene scene = new Scene(root,600,400);
+        Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab7.fxml"));
+        Scene scene = new Scene(root,600,400);
         stage.setTitle("Лабораторная работа 1");
         stage.setScene(scene);
         stage.show();

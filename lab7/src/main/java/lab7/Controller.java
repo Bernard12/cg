@@ -11,26 +11,26 @@ import lab7.Misc.TMatrix;
 public class Controller {
 
     @FXML
-    private AnchorPane center;
+    private AnchorPane cent7;
 
     @FXML
-    private Slider pA;
+    private Slider w1;
 
     @FXML
-    private Slider pB;
+    private Slider w2;
 
     @FXML
-    private Slider pa;
+    private Slider w3;
 
     @FXML
-    private Slider pb;
+    private Slider w4;
 
     @FXML
-    private Slider pStep;
+    private Slider w5;
 
     @FXML
     private void initialize() {
-        Slider[] params = {pA, pB, pa, pb, pStep};
+        Slider[] params = {w1, w2, w3, w4, w5};
 
         TMatrix state = new TMatrix(new double[][]{
                 {1, 0, 0},
@@ -40,11 +40,11 @@ public class Controller {
         Graphic graphic = new Graphic(params);
 
         MyCanvas canvas = new MyCanvas(
-                center.getPrefWidth(),
-                center.getPrefHeight()
+                cent7.getPrefWidth(),
+                cent7.getPrefHeight()
         );
-        double width = center.getPrefWidth();
-        double height = center.getPrefHeight();
+        double width = cent7.getPrefWidth();
+        double height = cent7.getPrefHeight();
 
         AnchorPane.setTopAnchor(canvas, 0.0);
         AnchorPane.setBottomAnchor(canvas, 0.0);
@@ -67,7 +67,7 @@ public class Controller {
             state.getMatrix()[2][2] = sc;
         });
 
-        center.getChildren().add(canvas);
+        cent7.getChildren().add(canvas);
     }
 
 }
