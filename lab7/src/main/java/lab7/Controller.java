@@ -5,6 +5,10 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 import lab7.CustomCanvas.MyCanvas;
 import lab7.Misc.TMatrix;
+import lab7.Misc.Vector;
+
+import java.util.ArrayList;
+
 /*
     Class to connect view(data from window) and logic
  */
@@ -31,13 +35,19 @@ public class Controller {
     @FXML
     private void initialize() {
         Slider[] params = {w1, w2, w3, w4, w5};
+        ArrayList<Vector> points = new ArrayList<>();
+        points.add(new Vector(-8, 4, 10));
+        points.add(new Vector(-6, 5, 10));
+        points.add(new Vector(0, 3, 10));
+        points.add(new Vector(6, 5, 10));
+        points.add(new Vector(8, 4, 10));
 
         TMatrix state = new TMatrix(new double[][]{
                 {1, 0, 0},
                 {0, 1, 0},
                 {0, 0, 1}}
         );
-        Graphic graphic = new Graphic(params);
+        Graphic graphic = new Graphic(params,points);
 
         MyCanvas canvas = new MyCanvas(
                 cent7.getPrefWidth(),

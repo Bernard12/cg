@@ -31,13 +31,13 @@ public class Drawer {
         line(canvas, zero, y, Color.RED);
     }
     // draw array of points
-    void draw(MyCanvas canvas, List<Vector> points, TMatrix state) {
+    void draw(MyCanvas canvas, List<Vector> points, TMatrix state,Color p) {
         for (int i = 1; i < points.size(); i++) {
             Vector t1 = points.get(i - 1);
             Vector t2 = points.get(i);
             Vector firstPoint = state.transform(t1);
             Vector secondPoint = state.transform(t2);
-            line(canvas, firstPoint, secondPoint, Color.GOLDENROD);
+            line(canvas, firstPoint, secondPoint,p);
         }
     }
     // connect 2 point with a line
