@@ -1,10 +1,10 @@
-package lab1.CustomCanvas;
+package lab7.CustomCanvas;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import lab1.Drawer;
-import lab1.Misc.TMatrix;
+import lab7.Drawer;
+import lab7.Misc.TMatrix;
 
 // Custom resizable canvas
 public class MyCanvas extends Canvas {

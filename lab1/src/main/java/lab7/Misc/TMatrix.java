@@ -1,4 +1,4 @@
-package lab1.Misc;
+package lab7.Misc;
 
 // matrix for linear transform
 public class TMatrix {

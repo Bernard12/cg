@@ -1,10 +1,10 @@
-package lab1;
+package lab7;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
-import lab1.CustomCanvas.MyCanvas;
-import lab1.Misc.TMatrix;
+import lab7.CustomCanvas.MyCanvas;
+import lab7.Misc.TMatrix;
 /*
     Class to connect view(data from window) and logic
  */

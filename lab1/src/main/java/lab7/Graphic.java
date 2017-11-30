@@ -1,9 +1,9 @@
-package lab1;
+package lab7;
 
 import javafx.scene.control.Slider;
-import lab1.CustomCanvas.MyCanvas;
-import lab1.Misc.TMatrix;
-import lab1.Misc.Vector;
+import lab7.CustomCanvas.MyCanvas;
+import lab7.Misc.TMatrix;
+import lab7.Misc.Vector;
 
 import java.util.ArrayList;
 import java.util.List;

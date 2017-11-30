@@ -1,4 +1,4 @@
-package lab1.Misc;
+package lab7.Misc;
 
 public class Vector {
     private final double x,y,h;

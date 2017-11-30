@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.Controller">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab7.Controller">
    <center>
       <AnchorPane fx:id="center" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
    </center>
@@ -15,6 +15,14 @@
          <children>
             <VBox prefHeight="400.0" prefWidth="202.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
+                  <VBox prefHeight="43.0" prefWidth="200.0" style="-fx-padding: 5;">
+                     <children>
+                        <Label text="Function:" />
+                        <Label text="x = a*t + b*sin(t)" />
+                        <Label text="y = a - b*cos(t)" />
+                        <Label text="t from A to B" />
+                     </children>
+                  </VBox>
                   <VBox prefHeight="43.0" prefWidth="200.0" style="-fx-padding: 5;">
                      <children>
                         <Label text="A" />

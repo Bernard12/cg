@@ -17,14 +17,6 @@
                <children>
                   <VBox prefHeight="43.0" prefWidth="200.0" style="-fx-padding: 5;">
                      <children>
-                        <Label text="Function:" />
-                        <Label text="x = a*t + b*sin(t)" />
-                        <Label text="y = a - b*cos(t)" />
-                        <Label text="t from A to B" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="43.0" prefWidth="200.0" style="-fx-padding: 5;">
-                     <children>
                         <Label text="A" />
                         <Slider fx:id="pA" blockIncrement="2.0" majorTickUnit="1.0" max="4.0" min="-4.0" showTickLabels="true" showTickMarks="true" />
                      </children>
