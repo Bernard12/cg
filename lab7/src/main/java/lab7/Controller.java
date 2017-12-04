@@ -3,7 +3,9 @@ package lab7;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import lab7.CustomCanvas.MyCanvas;
+import lab7.Misc.MyCircle;
 import lab7.Misc.TMatrix;
 import lab7.Misc.Vector;
 
@@ -35,19 +37,19 @@ public class Controller {
     @FXML
     private void initialize() {
         Slider[] params = {w1, w2, w3, w4, w5};
-        ArrayList<Vector> points = new ArrayList<>();
-        points.add(new Vector(-8, 4, 10));
-        points.add(new Vector(-6, 5, 10));
-        points.add(new Vector(0, 3, 10));
-        points.add(new Vector(6, 5, 10));
-        points.add(new Vector(8, 4, 10));
+        ArrayList<MyCircle> points = new ArrayList<>();
+        points.add(new MyCircle(new Vector(-8, 4, 10), 5, Color.AQUA));
+        points.add(new MyCircle(new Vector(-6, 5, 10), 5, Color.AQUA));
+        points.add(new MyCircle(new Vector(0, 3, 10), 5, Color.AQUA));
+        points.add(new MyCircle(new Vector(6, 5, 10), 5, Color.AQUA));
+        points.add(new MyCircle(new Vector(8, 4, 10), 5, Color.AQUA));
 
         TMatrix state = new TMatrix(new double[][]{
                 {1, 0, 0},
                 {0, 1, 0},
                 {0, 0, 1}}
         );
-        Graphic graphic = new Graphic(params,points);
+        Graphic graphic = new Graphic(params, points);
 
         MyCanvas canvas = new MyCanvas(
                 cent7.getPrefWidth(),
@@ -69,11 +71,11 @@ public class Controller {
         }
 
         canvas.widthProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue()/width;
+            double sc = t1.doubleValue() / width;
             state.getMatrix()[2][2] = sc;
         });
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
-            double sc = t1.doubleValue()/height;
+            double sc = t1.doubleValue() / height;
             state.getMatrix()[2][2] = sc;
         });
 

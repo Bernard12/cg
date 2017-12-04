@@ -3,6 +3,7 @@ package lab7;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import lab7.CustomCanvas.MyCanvas;
+import lab7.Misc.MyCircle;
 import lab7.Misc.TMatrix;
 import lab7.Misc.Vector;
 
@@ -18,10 +19,10 @@ public class Graphic {
 
     private final Slider[] params;
     private ArrayList<Function<Double,Double>> functions;
-    private ArrayList<Vector> p;
+    private ArrayList<MyCircle> p;
 
 
-    Graphic(Slider[] params,ArrayList<Vector> points) {
+    Graphic(Slider[] params,ArrayList<MyCircle> points) {
         this.params = params;
         functions = new ArrayList<>();
         functions.add(t -> {
@@ -92,10 +93,10 @@ public class Graphic {
             double x = 0;
             double y = 0;
             for (int i = 0; i < functions.size(); i++) {
-                x += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getX();
-                y += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getY();
+                x += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getCenter().getX();
+                y += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getCenter().getY();
             }
-            res.add(new Vector(x/c, y/c, 10));
+            res.add(new Vector(x/c, y/c, 15));
             cur += step;
         }
         return res;
@@ -108,8 +109,8 @@ public class Graphic {
         }
 
         Drawer drawer = new Drawer();
-        drawer.draw(canvas,points,state, Color.RED);
-        drawer.draw(canvas,p,state,Color.BLACK);
+        //drawer.drawPoints(canvas,points,state, Color.RED);
+        drawer.drawCircle(canvas,p,state);
 
     }
 

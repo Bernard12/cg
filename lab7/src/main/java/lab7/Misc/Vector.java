@@ -1,7 +1,7 @@
 package lab7.Misc;
 
 public class Vector {
-    private final double x,y,h;
+    private double x,y,h;
 
     public Vector(double x, double y, double h) {
         this.x = x;
@@ -9,15 +9,27 @@ public class Vector {
         this.h = h;
     }
 
-    public final double getX() {
+    public double getX() {
         return this.x;
     }
 
-    public final double getY() {
+    public double getY() {
         return this.y;
     }
 
-    public final double getH() {
+    public double getH() {
         return h;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setH(double h) {
+        this.h = h;
     }
 }
