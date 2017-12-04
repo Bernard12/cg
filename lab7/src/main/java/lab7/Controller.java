@@ -39,10 +39,10 @@ public class Controller {
         Slider[] params = {w1, w2, w3, w4, w5};
         ArrayList<MyCircle> points = new ArrayList<>();
         points.add(new MyCircle(new Vector(-8, 4, 10), 5, Color.AQUA));
-        points.add(new MyCircle(new Vector(-6, 5, 10), 5, Color.AQUA));
-        points.add(new MyCircle(new Vector(0, 3, 10), 5, Color.AQUA));
-        points.add(new MyCircle(new Vector(6, 5, 10), 5, Color.AQUA));
-        points.add(new MyCircle(new Vector(8, 4, 10), 5, Color.AQUA));
+        points.add(new MyCircle(new Vector(-6, 5, 10), 5, Color.RED));
+        points.add(new MyCircle(new Vector(0, 3, 10), 5, Color.AZURE));
+        points.add(new MyCircle(new Vector(6, 5, 10), 5, Color.GREEN));
+        points.add(new MyCircle(new Vector(8, 4, 10), 5, Color.BLUE));
 
         TMatrix state = new TMatrix(new double[][]{
                 {1, 0, 0},

@@ -96,7 +96,7 @@ public class Graphic {
                 x += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getCenter().getX();
                 y += functions.get(i).apply(cur) * getParams()[i].getValue() * p.get(i).getCenter().getY();
             }
-            res.add(new Vector(x/c, y/c, 15));
+            res.add(new Vector(x/c, y/c, 10));
             cur += step;
         }
         return res;
@@ -109,7 +109,7 @@ public class Graphic {
         }
 
         Drawer drawer = new Drawer();
-        //drawer.drawPoints(canvas,points,state, Color.RED);
+        drawer.drawPoints(canvas,points,state, Color.RED);
         drawer.drawCircle(canvas,p,state);
 
     }
