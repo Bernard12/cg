@@ -9,6 +9,12 @@ public class Vector {
         this.h = h;
     }
 
+    public Vector(Vector v){
+        this.x = v.getX();
+        this.y = v.getY();
+        this.h = v.getH();
+    }
+
     public double getX() {
         return this.x;
     }

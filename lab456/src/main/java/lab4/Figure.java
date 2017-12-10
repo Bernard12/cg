@@ -15,11 +15,10 @@ import static org.lwjgl.opengl.GL11.glColor3f;
 
 public class Figure {
 
-    @Setter @Getter
     private double h, k, r;
-    @Setter @Getter
+
     private int approx, sides;
-    @Setter @Getter
+
     private List<Model> triangles;
 
 
@@ -101,5 +100,53 @@ public class Figure {
             glColor3f(0,0,0);
             model.render(m, shader,ang);
         }
+    }
+
+    public double getH() {
+        return h;
+    }
+
+    public void setH(double h) {
+        this.h = h;
+    }
+
+    public double getK() {
+        return k;
+    }
+
+    public void setK(double k) {
+        this.k = k;
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public int getApprox() {
+        return approx;
+    }
+
+    public void setApprox(int approx) {
+        this.approx = approx;
+    }
+
+    public int getSides() {
+        return sides;
+    }
+
+    public void setSides(int sides) {
+        this.sides = sides;
+    }
+
+    public List<Model> getTriangles() {
+        return triangles;
+    }
+
+    public void setTriangles(List<Model> triangles) {
+        this.triangles = triangles;
     }
 }

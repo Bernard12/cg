@@ -1,9 +1,12 @@
 package lab7;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import lab7.CustomCanvas.MyCanvas;
 import lab7.Misc.MyCircle;
 import lab7.Misc.TMatrix;
@@ -77,6 +80,53 @@ public class Controller {
         canvas.heightProperty().addListener((observableValue, number, t1) -> {
             double sc = t1.doubleValue() / height;
             state.getMatrix()[2][2] = sc;
+        });
+        final int[] pressed = {-1};
+        final int[] curX = {-1};
+        final int[] curY = {-1};
+        cent7.setOnMouseClicked(mouseEvent -> {
+            int x = (int) mouseEvent.getX();
+            int y = (int) -mouseEvent.getY();
+            int xCenter = (int) canvas.getWidth() / 2;
+            int yCenter = (int) canvas.getHeight() / 2;
+            x -= xCenter;
+            y += yCenter;
+            //System.out.println(x + " " + y);
+            for(int i = 0; i < points.size(); i++){
+                Vector v = new Vector(points.get(i).getCenter());
+                v = state.transform(v);
+                double d = Math.pow(v.getX()*v.getH() - x,2) + Math.pow(v.getY()*v.getH() - y,2);
+                double r = points.get(i).getR();
+                if( d < r * r){
+                    pressed[0] = i;
+                    System.out.println(i);
+                    curX[0] = (int) mouseEvent.getX();
+                    curY[0] = (int) mouseEvent.getY();
+                    break;
+                }
+            }
+        });
+
+        cent7.setOnMouseDragged(mouseEvent -> {
+            int x = (int) mouseEvent.getX();
+            int y = (int) mouseEvent.getY();
+            if(pressed[0]!=-1){
+                MyCircle circle = points.get(pressed[0]);
+                Vector r = circle.getCenter();
+                double diffX = x - curX[0];
+                double diffY = y - curY[0];
+
+                r.setX(r.getX() + diffX);
+                r.setY(r.getY() - diffY);
+                curX[0] = x;
+                curY[0] = y;
+                canvas.init();
+                graphic.draw(canvas, state);
+            }
+        });
+
+        cent7.setOnMouseReleased(mouseEvent -> {
+            pressed[0] = -1;
         });
 
         cent7.getChildren().add(canvas);

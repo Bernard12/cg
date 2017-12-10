@@ -170,6 +170,9 @@ public class Main extends Application{
             shader.bind();
             shader.setUniform("project", m);
             shader.setUniform("cs", (float) Math.cos(Math.toRadians(angle)));
+            shader.setUniform("ambK",amb);
+            shader.setUniform("diffK",dif);
+            shader.setUniform("specK",spec);
 
             figure.draw(m, shader,angle);
             angle++;

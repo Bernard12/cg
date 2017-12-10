@@ -6,14 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
-    @author  Simakhinm Ivan
-    Option 17:
-    x = a * t + b * sin(t)
-    y = a - b * cos(t)
-    @value t is from A to B
- */
-
 public class Main extends Application {
 
     /*
@@ -23,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/scheme/lab7.fxml"));
         Scene scene = new Scene(root,600,400);
-        stage.setTitle("Лабораторная работа 1");
+        stage.setTitle("Лабораторная работа 7");
         stage.setScene(scene);
         stage.show();
         stage.setMinWidth(scene.getWindow().getWidth());
