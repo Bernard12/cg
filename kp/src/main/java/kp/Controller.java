@@ -31,10 +31,10 @@ public class Controller {
         );
         ArrayList<ArrayList<Vector>> p = new ArrayList<>();
         ArrayList<Vector> l1 = new ArrayList<>();
-        l1.add(new Vector(-10,-10,0,1));
-        l1.add(new Vector(-5,-10,0,1));
-        l1.add(new Vector(5,-10,0,1));
-        l1.add(new Vector(10,-10,0,1));
+        l1.add(new Vector(-10,-10,-5,1));
+        l1.add(new Vector(-5,-10,5,1));
+        l1.add(new Vector(5,-10,5,1));
+        l1.add(new Vector(10,-10,-5,1));
         ArrayList<Vector> l2 = new ArrayList<>();
         l2.add(new Vector(-10,-5,0,1));
         l2.add(new Vector(-5,-5,0,1));
@@ -46,9 +46,9 @@ public class Controller {
         l3.add(new Vector(5,5,0,1));
         l3.add(new Vector(10,5,0,1));
         ArrayList<Vector> l4 = new ArrayList<>();
-        l4.add(new Vector(-10,10,0,1));
+        l4.add(new Vector(-10,10,5,1));
         l4.add(new Vector(-5,10,0,1));
-        l4.add(new Vector(5,10,0,1));
+        l4.add(new Vector(5,10,5,1));
         l4.add(new Vector(10,10,0,1));
         p.add(l1);
         p.add(l2);

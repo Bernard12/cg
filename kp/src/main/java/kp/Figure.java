@@ -70,8 +70,8 @@ public class Figure {
 
     public void draw(MyCanvas canvas) {
         Drawer drawer = new Drawer();
-        for(int i = 0; i < p.size(); i++){
-            drawer.draw(canvas,p.get(i));
+        for(int i = 0; i < p.size() - 1; i++){
+            drawer.draw(canvas,p.get(i),p.get(i+1));
         }
     }
 

@@ -37,12 +37,22 @@ public class Drawer {
         }
     }
 
-    public void draw(MyCanvas canvas,Vector p1,Vector p2){
+    public void draw(MyCanvas canvas, Vector p1, Vector p2){
         Vector t1 = canvas.getState().transform(p1);
         Vector t2 = canvas.getState().transform(p2);
         line(canvas,t1,t2,Color.BLACK);
     }
 
+    public void draw(MyCanvas canvas, List<Vector> l1,List<Vector> l2) {
+        for (int i = 0; i < l1.size() - 1; i++) {
+            draw(canvas, l1.get(i), l1.get(i + 1));
+            draw(canvas, l1.get(i), l2.get(i + 1));
+            draw(canvas, l1.get(i+1), l2.get(i + 1));
+
+            draw(canvas, l2.get(i), l2.get(i + 1));
+            draw(canvas, l2.get(i), l1.get(i));
+        }
+    }
 
 
     public void rVector(MyCanvas canvas, Vector p) {
