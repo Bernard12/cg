@@ -1,10 +1,10 @@
-package lab2;
+package kp;
 
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import lab2.CustomCanvas.MyCanvas;
-import lab2.Misc.TMatrix;
+import kp.CustomCanvas.MyCanvas;
+import kp.Misc.TMatrix;
 
 /**
  * Class listener used to rotate figure

@@ -1,4 +1,4 @@
-package lab2.Misc;
+package kp.Misc;
 
 
 public class Vector {

@@ -1,11 +1,11 @@
-package lab2.CustomCanvas;
+package kp.CustomCanvas;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import lab2.Drawer;
-import lab2.Figure;
-import lab2.Misc.TMatrix;
+import kp.Drawer;
+import kp.Figure;
+import kp.Misc.TMatrix;
 
 
 public class MyCanvas extends Canvas {

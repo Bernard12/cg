@@ -1,11 +1,10 @@
-package lab2;
+package kp;
 
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lab2.CustomCanvas.MyCanvas;
-import lab2.Misc.TMatrix;
+import kp.CustomCanvas.MyCanvas;
+import kp.Misc.TMatrix;
 
 public class Controller {
 

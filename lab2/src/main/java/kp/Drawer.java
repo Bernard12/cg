@@ -1,11 +1,11 @@
-package lab2;
+package kp;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import lab2.CustomCanvas.MyCanvas;
-import lab2.Misc.TMatrix;
-import lab2.Misc.Vector;
+import kp.CustomCanvas.MyCanvas;
+import kp.Misc.TMatrix;
+import kp.Misc.Vector;
 
 import java.util.List;
 

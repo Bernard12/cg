@@ -1,7 +1,7 @@
-package lab2;
+package kp;
 
-import lab2.CustomCanvas.MyCanvas;
-import lab2.Misc.Vector;
+import kp.CustomCanvas.MyCanvas;
+import kp.Misc.Vector;
 
 import java.util.ArrayList;
 
