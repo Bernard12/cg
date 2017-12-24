@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kp.Controller">
+   <center>
+      <AnchorPane fx:id="center" prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+   </center>
+    <bottom>
+        <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="600.0">
+                    <children>
+                        <VBox prefHeight="100.0" prefWidth="125.0">
+                            <children>
+                                <Label prefHeight="78.0" prefWidth="105.0" text="Approximation">
+                                    <VBox.margin>
+                                        <Insets left="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Slider fx:id="approx" blockIncrement="0.09" majorTickUnit="0.09" max="0.5" min="0.05" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0">
+                                    <VBox.margin>
+                                        <Insets left="10.0" />
+                                    </VBox.margin>
+                                </Slider>
+                            </children>
+                        </VBox>
+                        <HBox prefHeight="100.0" prefWidth="476.0">
+                            <children>
+                                <TextField fx:id="text" prefHeight="23.0" prefWidth="171.0">
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="40.0" />
+                                    </HBox.margin>
+                                </TextField>
+                                <Button fx:id="load" mnemonicParsing="false" text="Load">
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="40.0" />
+                                    </HBox.margin>
+                                </Button>
+
+                            </children>
+                            <HBox.margin>
+                                <Insets left="5.0" />
+                            </HBox.margin>
+                        </HBox>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

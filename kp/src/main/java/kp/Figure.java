@@ -11,13 +11,19 @@ import java.util.ArrayList;
 public class Figure {
     private ArrayList<ArrayList<Vector>> central;
     private ArrayList<ArrayList<Vector>> p;
+    private double step = 0.1;
 
 
     Figure(ArrayList<ArrayList<Vector>> points) {
         central = points;
         p = new ArrayList<>();
         generatePoints();
-        int a = 5/2;
+    }
+
+    public void update(){
+        p.clear();
+        p = new ArrayList<>();
+        generatePoints();
     }
 
     private long binom(int n,int k) {
@@ -39,9 +45,9 @@ public class Figure {
     }
 
     private void generatePoints() {
-        for (double x = 0; x < 1; x += 0.1) {
+        for (double x = 0; x < 1; x += step) {
             ArrayList<Vector> l = new ArrayList<>();
-            for (double y = 0; y < 1; y += 0.1) {
+            for (double y = 0; y < 1; y += step) {
                 l.add(point(x, y));
             }
             p.add(l);
@@ -75,4 +81,27 @@ public class Figure {
         }
     }
 
+    public ArrayList<ArrayList<Vector>> getCentral() {
+        return central;
+    }
+
+    public void setCentral(ArrayList<ArrayList<Vector>> central) {
+        this.central = central;
+    }
+
+    public ArrayList<ArrayList<Vector>> getP() {
+        return p;
+    }
+
+    public void setP(ArrayList<ArrayList<Vector>> p) {
+        this.p = p;
+    }
+
+    public double getStep() {
+        return step;
+    }
+
+    public void setStep(double step) {
+        this.step = step;
+    }
 }
